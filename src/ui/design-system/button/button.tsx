@@ -13,7 +13,7 @@ interface Props {
     | "black"
     | "white";
   icon?: IconProps;
-  iconTheme?: "accent" | "secondary" | "gray" | "black" | "white";
+  iconTheme?: "accent" | "secondary" | "gray" | "black" | "white" |"empty";
   iconPosition?: "left" | "right";
   disabled?: boolean;
   isLoading?: boolean;
@@ -59,20 +59,20 @@ export const Button = ({
     case "ico":
       if (iconTheme === "accent") {
         variantStyles =
-          "bg-primary hover:bg-primary-400 text-white rounded-full";
+           "text-white";
       }
       if (iconTheme === "secondary") {
         variantStyles =
-          "bg-primary-200 hover:bg-primary-300/50 text-primary rounded-full";
+          " text-primary ";
       }
       if (iconTheme === "gray") {
-        variantStyles = "bg-gray-700 hover:bg-gray-600 text-white rounded-full";
+        variantStyles = " text-white ";
       }
       if (iconTheme === "black") {
-        variantStyles = "bg-gray-900 hover:bg-gray-800 text-white rounded-full";
+        variantStyles = " text-white leading-none";
       }
       if (iconTheme === "white") {
-        variantStyles = "bg-white hover:bg-gray-100 text-gray-900 rounded-full";
+        variantStyles = " text-gray-900 ";
       }
       break;
   }
@@ -100,7 +100,7 @@ export const Button = ({
           ? " flex items-center justify-center w-[60px] h-[60px]"
           : "px-[22px] py-[12px]"
       }`;
-      icoSize = 24;
+      icoSize = 30;
       break;
   }
 
@@ -111,12 +111,11 @@ export const Button = ({
         className={clsx(
           variantStyles,
           sizeStyles,
-          icoSize,
           isLoading && "cursor-wait",
           "relative animate-none",
         )}
         onClick={() => console.log("click")}
-        disabled={disabled}
+        disabled={disabled || isLoading}
       >
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
@@ -130,12 +129,12 @@ export const Button = ({
 
         <div className={clsx(isLoading && "invisible")}>
           {icon && variant === "ico" ? (
-            <icon.icon size={icoSize} />
+            <icon.icon size={icoSize} className="block" />
           ) : (
             <div className={clsx(icon && "flex items-center gap-1")}>
-              {icon && iconPosition === "left" && <icon.icon size={icoSize} />}
+              {icon && iconPosition === "left" && <icon.icon size={icoSize} className="block" />}
               {children}
-              {icon && iconPosition === "right" && <icon.icon size={icoSize} />}
+              {icon && iconPosition === "right" && <icon.icon size={icoSize} className="block"/>}
             </div>
           )}
         </div>

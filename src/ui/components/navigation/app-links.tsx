@@ -1,87 +1,122 @@
-import { AppLinks } from "@/types/app-links";
+import { LinkTypes } from "@/lib/link-type";
+import { AppLinks, FooterLinks } from "@/types/app-links";
+import { AiFillYoutube, AiOutlineInstagram,  AiOutlineTikTok } from "react-icons/ai";
+import { FaLinkedinIn } from "react-icons/fa";
 
 
-export const footerApplicationLinks: AppLinks[] = [
-    {
-        label: "Accueil",
-        baseUrl: "/#",
-        type: "internal"
-    },
-       {
-        label: "Projets",
-        baseUrl: "/#",
-        type: "internal"
-    },
-       {
-        label: "Coders Monkeys",
-        baseUrl: "/#",
-        type: "internal"
-    },
-       {
-        label: "Formations",
-        baseUrl: "https://youtube.com",
-        type: "internal"
-    },
+const footerLeClubList: AppLinks[] = [
+  {
+    label: "Présentation du Club",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
+  {
+    label: "Agenda",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
+  {
+    label: "Nos Educateurs",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
 ];
-const footerUsersLinks: AppLinks[] = [
-    {
-        label: "Mon espace",
-        baseUrl: "/#",
-        type: "internal"
-    },
-       {
-        label: "Connexion",
-        baseUrl: "/#",
-        type: "internal"
-    },
-       {
-        label: "Inscription",
-        baseUrl: "/#",
-        type: "internal"
-    },
-       {
-        label: "Mot de passe oublié",
-        baseUrl: "https://youtube.com",
-        type: "internal"
-    },
+const footerLesEquipes: AppLinks[] = [
+  {
+    label: "Séniors 1",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
+  {
+    label: "U21 1",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
+  {
+    label: "Les Equipes Compétitions",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
+  {
+    label: "Les Equipes Loisirs",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
 ];
 const footerInformationsLinks: AppLinks[] = [
-    {
-        label: "CGU",
-        baseUrl: "/#",
-        type: "internal"
-    },
-       {
-        label: "Confidentialité",
-        baseUrl: "/#",
-        type: "internal"
-    },
-       {
-        label: "A propos",
-        baseUrl: "/#",
-        type: "internal"
-    },
-       {
-        label: "Contact",
-        baseUrl: "https://youtube.com",
-        type: "internal"
-    },
+  {
+    label: "L'inscription",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
+  {
+    label: "Les Gymnases",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
+  {
+    label: "Tarifs & Aides",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
+  {
+    label: "Les Permanences",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
+  {
+    label: "Les Horaires",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
+  {
+    label: "Dates et Reprises",
+    baseUrl: "/#",
+    type: LinkTypes.INTERNAL,
+  },
 ];
-const footerSocialNetworksLinks: AppLinks[] = [
-    {
-        label: "Youtube",
-        baseUrl: "https://youtube.com",
-        type: "internal"
-    },
-       {
-        label: "Linkedin",
-        baseUrl: "https://www.linkedin.com/",
-        type: "internal"
-    },
-       {
-        label: "https://slack.com",
-        baseUrl: "Slack",
-        type: "internal"
-    },
-     
+
+export const footerSocialsNetworksLinks: AppLinks[] = [
+  {
+    label: "Youtube",
+    baseUrl: "https://www.youtube.com/@NEGATIVBasketball",
+    type: LinkTypes.EXTERNAL,
+    icon: AiFillYoutube,
+  },
+  {
+    label: "Instagram",
+    baseUrl: "https://www.instagram.com/negativ.basketball/",
+    type: LinkTypes.EXTERNAL,
+    icon:AiOutlineInstagram,
+  },
+  {
+    label: "TikTok",
+    baseUrl: "https://www.tiktok.com/@negativ.basketball",
+    type: LinkTypes.EXTERNAL,
+    icon: AiOutlineTikTok,
+  },
+  {
+    label: "Linkedin",
+    baseUrl: "https://www.linkedin.com/company/ngvbasket/posts/?feedView=all",
+    type: LinkTypes.EXTERNAL,
+    icon: FaLinkedinIn,
+  },
+];
+
+export const footerLeClubColumn: FooterLinks = {
+  label: "LE CLUB",
+  links: footerLeClubList,
+};
+
+
+
+export const footerLinks = [
+  {
+    label: "LES EQUIPES",
+    links: footerLesEquipes,
+  },
+  {
+    label: "INFORMATIONS PRATIQUES",
+    links: footerInformationsLinks,
+  },
 ];

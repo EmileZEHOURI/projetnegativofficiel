@@ -12,8 +12,12 @@ a:hover {
 .animate,
 a,
 a:hover {
-  transition: all 0.2 ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 body {
   font-family: "Inter", sans-serif;
+}
+
+.hr{
+  border-color: "text-gray-800 "
 }

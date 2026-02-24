@@ -17,7 +17,7 @@ module.exports = {
         },
       ],
       "7xl": [
-        "72px",
+        "64px",
         {
           lineHeight: "80px",
           letterSpacing: "-4.5px",
@@ -25,7 +25,7 @@ module.exports = {
         },
       ],
       "6xl": [
-        "55px",
+        "48px",
         {
           lineHeight: "60px",
           letterSpacing: "-2.5px",
@@ -33,9 +33,9 @@ module.exports = {
         },
       ],
       "5xl": [
-        "48px",
+        "40px",
         {
-          lineHeight: "54px",
+          lineHeight: "40px",
           letterSpacing: "-1.6000000023841858px",
           fontWeight: "500",
         },
@@ -49,7 +49,7 @@ module.exports = {
         },
       ],
       "3xl": [
-        "28px",
+        "32px",
         {
           lineHeight: "34px",
           letterSpacing: "-0.000000011920929px",
@@ -65,7 +65,7 @@ module.exports = {
         },
       ],
       xl: [
-        "24px",
+        "20px",
         {
           lineHeight: "30px",
           letterSpacing: "-1px",
@@ -73,31 +73,15 @@ module.exports = {
         },
       ],
       lg: [
-        "21px",
+        "16px",
         {
           lineHeight: "30px",
           letterSpacing: "-0.000000011920929px",
           fontWeight: "400",
         },
       ],
-      base: [
-        "17px",
-        {
-          lineHeight: "25px",
-          letterSpacing: "-0.69999999988079071px",
-          fontWeight: "400",
-        },
-      ],
-      sm: [
-        "15px",
-        {
-          lineHeight: "23px",
-          letterSpacing: "-0.6000000238418579px",
-          fontWeight: "400",
-        },
-      ],
       caption1: [
-        "20px",
+        "24px",
         {
           lineHeight: "24px",
           letterSpacing: "-0.6px",
@@ -105,7 +89,7 @@ module.exports = {
         },
       ],
       caption2: [
-        "18px",
+        "22px",
         {
           lineHeight: "20px",
           letterSpacing: "-0.3px",
@@ -113,7 +97,7 @@ module.exports = {
         },
       ],
       caption3: [
-        "16px",
+        "20px",
         {
           lineHeight: "18px",
           letterSpacing: "-0.5px",

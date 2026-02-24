@@ -32,11 +32,11 @@ type SidebarProps = {
 const DEFAULT_SECTIONS: SidebarSection[] = [
   {
     title: "Inscription",
-    href: "/",
+    href: "/informations-pratiques/inscription",
   },
   {
     title: "Le Club",
-    href: "/",
+    href: "/presentation-club",
   },
   {
     title: "Les Equipes",

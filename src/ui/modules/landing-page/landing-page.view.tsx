@@ -8,7 +8,7 @@ import { SocialNetworkView } from "./components/social-network/social-network.vi
 export const LandingPageView = () => {
   return (
     <>
-        <HighPhotoView/>
+        <HighPhotoView imageSrc="/assets/img-negativ/img/photo-group-1.jpg" alt="Photo du Club" title="Le Nouveau Club Parisien"/>
         <SocialNetworkView/>
         <ArticlePlacement/>
         <PresentationClub/>

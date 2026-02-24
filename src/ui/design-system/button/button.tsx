@@ -16,7 +16,9 @@ interface Props {
     | "black"
     | "white"
     | "bpwhite" //je travaille sur ça
-    | "circle";
+    | "circle"
+    | "circleLight"
+    | "isLight";
   icon?: IconProps;
   iconTheme?: "accent" | "secondary" | "gray" | "black" | "white" | "empty";
   iconPosition?: "left" | "right";
@@ -93,6 +95,13 @@ export const Button = ({
       variantStyles =
         "flex w-[68px] h-[68px] rounded-full border border-white/70 items-center justify-center p-0 bg-transparent hover:bg-white/10 transition";
       break;
+    case "circleLight":
+      variantStyles =
+        "flex w-[68px] h-[68px] rounded-full border border-black/70 items-center justify-center p-0 bg-transparent hover:bg-black/10 transition";
+      break;
+    case "isLight":
+      variantStyles =
+        "bg-transparent border border-black text-primary whitespace-nowrap shrink-0 rounded-[2rem] hover:bg-black hover:text-white transition";
   }
 
   switch (size) {
@@ -162,7 +171,7 @@ export const Button = ({
   );
 
   const handleClick = () => {
-      action?.();   
+    action?.();
   };
 
   const buttonElement = (

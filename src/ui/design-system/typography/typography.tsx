@@ -8,10 +8,9 @@ interface Props {
     | "h3"
     | "h4"
     | "h5"
-    | "lead"
-    | "body-lg"
-    | "body-base"
-    | "body-sm"
+    | "h6"
+    | "h7"
+    | "h8"
     | "caption1"
     | "caption2"
     | "caption3"
@@ -61,20 +60,16 @@ export const Typography = ({
       variantStyles = "text-3xl";
       fontStyles = "font-heading uppercase tracking-wide";
       break;
-    case "lead":
+    case "h6":
+      variantStyles = "text-xl";
+      fontStyles=" font-heading uppercase tracking-wide";
+      break;
+    case "h7":
       variantStyles = "text-2xl";
       fontStyles = "font-body";
       break;
-    case "body-lg":
+    case "h8":
       variantStyles = "text-lg";
-      fontStyles = "font-body";
-      break;
-    case "body-base":
-      variantStyles = "text-base";
-      fontStyles = "font-body";
-      break;
-    case "body-sm":
-      variantStyles = "text-sm";
       fontStyles = "font-body";
       break;
     case "caption1":

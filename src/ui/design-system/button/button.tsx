@@ -1,9 +1,12 @@
 import clsx from "clsx";
 import { Spinner } from "../spinner/spinner";
 import { IconProps } from "@/types/iconProps";
+import { LinkType, LinkTypes } from "@/lib/link-type";
+import Link from "next/link";
+import { IconType } from "react-icons";
 
 interface Props {
-  size?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large" | "bpmedium";
   variant?:
     | "accent"
     | "secondary"
@@ -11,13 +14,19 @@ interface Props {
     | "disabled"
     | "ico"
     | "black"
-    | "white";
+    | "white"
+    | "bpwhite" //je travaille sur ça
+    | "circle";
   icon?: IconProps;
-  iconTheme?: "accent" | "secondary" | "gray" | "black" | "white" |"empty";
+  iconTheme?: "accent" | "secondary" | "gray" | "black" | "white" | "empty";
   iconPosition?: "left" | "right";
   disabled?: boolean;
   isLoading?: boolean;
   children?: React.ReactNode;
+  baseUrl?: string;
+  linkType?: LinkType;
+  onClick?: () => void;
+  action?: Function;
 }
 
 export const Button = ({
@@ -29,6 +38,9 @@ export const Button = ({
   disabled = false,
   isLoading = false,
   children,
+  baseUrl,
+  action = () => {},
+  linkType = "internal",
 }: Props) => {
   let variantStyles: string = "",
     sizeStyles: string = "",
@@ -56,14 +68,16 @@ export const Button = ({
       variantStyles =
         "bg-gray-400 border border-gray-500 text-gray-600 rounded cursor-not-allowed";
       break;
+    case "bpwhite":
+      variantStyles =
+        " bg-transparent border border-white text-white  whitespace-nowrap shrink-0 rounded-[2rem] hover:bg-white/10 transition";
+      break;
     case "ico":
       if (iconTheme === "accent") {
-        variantStyles =
-           "text-white";
+        variantStyles = "text-white";
       }
       if (iconTheme === "secondary") {
-        variantStyles =
-          " text-primary ";
+        variantStyles = " text-primary ";
       }
       if (iconTheme === "gray") {
         variantStyles = " text-white ";
@@ -75,12 +89,24 @@ export const Button = ({
         variantStyles = " text-gray-900 ";
       }
       break;
+    case "circle":
+      variantStyles =
+        "flex w-[68px] h-[68px] rounded-full border border-white/70 items-center justify-center p-0 bg-transparent hover:bg-white/10 transition";
+      break;
   }
 
   switch (size) {
+    case "bpmedium":
+      sizeStyles = `text-caption4 font-medium ${
+        variant === "bpwhite"
+          ? "px-[38px] py-[16px] flex flex-row  items-center justify-end "
+          : "px-[18px] py-[15px]"
+      }`;
+
+      break;
     case "small":
       sizeStyles = `text-caption3 font-medium ${
-        variant === "ico"
+        variant === "ico" || variant === "circle"
           ? "flex items-center justify-center w-[40px] h-[40px]"
           : "px-[14px] py-[11px]"
       }`;
@@ -88,15 +114,15 @@ export const Button = ({
       break;
     case "medium": //Default
       sizeStyles = `text-caption2 font-medium ${
-        variant === "ico"
-          ? "flex items-center justify-center w-[50px] h-[50px]"
+        variant === "ico" || variant === "circle"
+          ? "flex items-center justify-center w-[90px] h-[90px]"
           : "px-[18px] py-[15px]"
       }`;
       icoSize = 20;
       break;
     case "large":
       sizeStyles = `text-caption1 font-medium ${
-        variant === "ico"
+        variant === "ico" || variant === "circle"
           ? " flex items-center justify-center w-[60px] h-[60px]"
           : "px-[22px] py-[12px]"
       }`;
@@ -104,7 +130,42 @@ export const Button = ({
       break;
   }
 
-  return (
+  const Icon: IconType | undefined = icon?.icon;
+
+  const buttonContent = (
+    <>
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          {variant === "accent" || variant === "ico" ? (
+            <Spinner size="small" variant="white" />
+          ) : (
+            <Spinner size="small" />
+          )}
+        </div>
+      )}
+      <div className={clsx(isLoading && "invisible")}>
+        {Icon && variant === "ico" ? (
+          <Icon size={icoSize} className="block" />
+        ) : (
+          <div className={clsx(icon && "flex items-center gap-1")}>
+            {Icon && iconPosition === "left" && (
+              <Icon size={icoSize} className="block" />
+            )}
+            {children}
+            {Icon && iconPosition === "right" && (
+              <Icon size={icoSize} className="block" />
+            )}
+          </div>
+        )}
+      </div>
+    </>
+  );
+
+  const handleClick = () => {
+      action?.();   
+  };
+
+  const buttonElement = (
     <>
       <button
         type="button"
@@ -114,31 +175,24 @@ export const Button = ({
           isLoading && "cursor-wait",
           "relative animate-none",
         )}
-        onClick={() => console.log("click")}
+        onClick={handleClick}
         disabled={disabled || isLoading}
       >
-        {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            {variant === "accent" || variant === "ico" ? (
-              <Spinner size="small" variant="white" />
-            ) : (
-              <Spinner size="small" />
-            )}
-          </div>
-        )}
-
-        <div className={clsx(isLoading && "invisible")}>
-          {icon && variant === "ico" ? (
-            <icon.icon size={icoSize} className="block" />
-          ) : (
-            <div className={clsx(icon && "flex items-center gap-1")}>
-              {icon && iconPosition === "left" && <icon.icon size={icoSize} className="block" />}
-              {children}
-              {icon && iconPosition === "right" && <icon.icon size={icoSize} className="block"/>}
-            </div>
-          )}
-        </div>
+        {buttonContent}
       </button>
     </>
   );
+
+  if (baseUrl) {
+    if (linkType === LinkTypes.EXTERNAL) {
+      return (
+        <a href={baseUrl} target="_blank">
+          {buttonElement}
+        </a>
+      );
+    } else {
+      return <Link href={baseUrl}>{buttonElement} </Link>;
+    }
+  }
+  return buttonElement;
 };

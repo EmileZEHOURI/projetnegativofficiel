@@ -1,44 +1,54 @@
-import { Logo } from "@/ui/design-system/logo/logo";
-import { Container } from "../container/container";
-import { Typography } from "@/ui/design-system/typography/typography";
 import { Button } from "@/ui/design-system/button/button";
+import { Logo } from "@/ui/design-system/logo/logo";
 import Link from "next/link";
-import { ActiveLink } from "./active-link";
+import { Container } from "../container/container";
+import { useEffect, useState } from "react";
+import { HiOutlineMenu } from "react-icons/hi";
+import { Sidebar } from "../sidebar/sidebar";
 
-export const Navigation = () => {
+export const Navigation = ({
+  variant = "default",
+}: {
+  variant?: "default" | "overlay";
+}) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    console.log("sidebarOpen:", sidebarOpen);
+  }, [sidebarOpen]);
+
   return (
-    <div className="border-b-2 border-gray-400">
-      <Container className=" flex items-center justify-between py-1.5 gap-7">
-        <Link href="/">
-          <div className="flex items-center gap-2.5">
-            <Logo size="small" />
-            <div>
-              <div className="text-gray font-extrabold text-[24px]">
-                Negativ Basketball
-              </div>
-              <Typography variant="caption4" theme="gray" component="span">
-                Le nouveau club parisien
-              </Typography>
+    <div
+      className={
+        variant === "overlay" ? "absolute top-0 left-0 w-full z-50" : ""
+      }
+    >
+      <Container className="relative grid grid-cols-2 items-center py-6 bg-transparent">
+        {/* GAUCHE */}
+        <div className="flex justify-start">
+          <Button variant="circle" action={() => setSidebarOpen(true)}>
+            <div className="flex flex-col justify-between h-5">
+              <HiOutlineMenu size={44} className="text-white " />
             </div>
-          </div>
-        </Link>
-        <div className="flex items-center gap-7">
-          <Typography
-            variant="caption3"
-            component="div"
-            className="flex items-center gap-7"
-          >
-            <ActiveLink href="/design-system"> Design-System</ActiveLink>
-            <ActiveLink href="/projets"> Projets</ActiveLink>
-            <ActiveLink href="/formation"> Formation</ActiveLink>
-            <ActiveLink href="/contact"> Contact</ActiveLink>
-          </Typography>
-          <div className="flex items-center gap-2">
-            <Button size="small">Connexion</Button>
-            <Button size="small" variant="secondary">
-              Rejoindre
-            </Button>
-          </div>
+          </Button>
+        </div>
+        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
+        {/* CENTRE */}
+        <div className="absolute left-1/2 -translate-x-1/2">
+          <Link href="/" aria-label="Accueil">
+            <Logo size="large" />
+          </Link>
+        </div>
+
+        {/* DROITE */}
+        <div className="hidden lg:flex justify-end gap-4 font-heading ">
+          <Button size="bpmedium" variant="bpwhite">
+            INFORMATIONS PRATIQUES
+          </Button>
+          <Button size="bpmedium" variant="bpwhite">
+            S'INSCRIRE
+          </Button>
         </div>
       </Container>
     </div>

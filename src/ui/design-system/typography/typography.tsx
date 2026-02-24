@@ -21,6 +21,7 @@ interface Props {
   weight?: "regular" | "medium";
   className?: string;
   children: React.ReactNode;
+  font?: "heading" | "body"
 }
 
 export const Typography = ({
@@ -32,50 +33,65 @@ export const Typography = ({
   children,
 }: Props) => {
   let variantStyles: string = "",
-    colorStyles: string = "";
+    colorStyles: string = "",
+    fontStyles: string = "";
 
   switch (variant) {
     case "display":
       variantStyles = "text-8xl";
+      fontStyles = "font-heading uppercase tracking-wide";
       break;
     case "h1":
       variantStyles = "text-7xl";
+      fontStyles = "font-heading uppercase tracking-wide";
       break;
     case "h2":
       variantStyles = "text-6xl";
+      fontStyles = "font-heading uppercase tracking-wide";
       break;
     case "h3": //Default
       variantStyles = "text-5xl";
+      fontStyles = "font-heading uppercase tracking-wide";
       break;
     case "h4":
       variantStyles = "text-4xl";
+      fontStyles = "font-heading uppercase tracking-wide";
       break;
     case "h5":
       variantStyles = "text-3xl";
+      fontStyles = "font-heading uppercase tracking-wide";
       break;
     case "lead":
       variantStyles = "text-2xl";
+      fontStyles = "font-body";
       break;
     case "body-lg":
       variantStyles = "text-lg";
+      fontStyles = "font-body";
       break;
     case "body-base":
       variantStyles = "text-base";
+      fontStyles = "font-body";
       break;
     case "body-sm":
       variantStyles = "text-sm";
+      fontStyles = "font-body";
       break;
     case "caption1":
       variantStyles = "text-caption1";
+      fontStyles = "font-body";
       break;
     case "caption2":
       variantStyles = "text-caption2";
+      fontStyles = "font-body";
       break;
     case "caption3":
       variantStyles = "text-caption3";
+      fontStyles = "font-body";
       break;
     case "caption4":
       variantStyles = "text-caption4";
+      fontStyles = "font-body";
       break;
   }
 
@@ -96,7 +112,6 @@ export const Typography = ({
       colorStyles = "text-secondary";
       break;
 
-
     default:
       break;
   }
@@ -106,10 +121,10 @@ export const Typography = ({
       className={clsx(
         variantStyles,
         colorStyles,
+        fontStyles,
         weight === "medium" && "font-medium",
         className,
         theme,
-        
       )}
     >
       {children}

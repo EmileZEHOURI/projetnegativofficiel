@@ -4,11 +4,10 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/styles/**/*.css",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}"
-
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-fontSize: {
+    fontSize: {
       "8xl": [
         "120px",
         {
@@ -132,13 +131,22 @@ fontSize: {
     },
 
     borderRadius: {
-      DEFAULT: '10px',
+      DEFAULT: "10px",
       full: "9999px",
     },
     extend: {
       colors: {
         white: "#ffffff",
-        primary: {
+        primary:{
+          100:"#f7997f",
+          200:"#f68567",
+          300:"#f4724f",
+          DEFAULT:"#f35f37",
+          500:"#f24c1f",
+          600:"#e93d0e",
+          700: "#d1360d",
+        },
+        primarybis: {
           100: "#ffae66",
           200: "#ffa14c",
           300: "#ff9332",
@@ -163,7 +171,10 @@ fontSize: {
           800: "#333333",
           DEFAULT: "#1D1D1D",
         },
-
+      },
+      fontFamily: {
+        heading: ["var(--font-anton)", "sans-serif"],
+        body: ["var(--font-inter)", "sans-serif"],   //Je veux qu'il soit en Arial
       },
     },
   },

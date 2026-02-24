@@ -7,6 +7,7 @@ import { ActiveLink } from "./active-link";
 import { FooterLinks } from "@/types/app-links";
 import { LinkTypes } from "@/lib/link-type";
 import { SocialNetworksButtons } from "./social-networks-buttons";
+import { Logo } from "@/ui/design-system/logo/logo";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,16 +16,13 @@ export const Footer = () => {
     <FooterLink key={uuidv4()} data={colomnLinks} />
   ));
 
+  
+
   return (
     <div className="bg-black ">
       <Container className="flex items-start gap-16 pt-16">
         <a href="/" target="_blank">
-          <Image
-            src="assets/svg/logo-footer.svg"
-            width={246}
-            height={246}
-            alt="Logo Negativ"
-          />
+          <Logo size="xl-footer"/>
         </a>
         {/* Colonne Le Club*/}
         <div className="">

@@ -19,7 +19,10 @@ export const SocialNetworksButtons = ({ className, theme="black", icoSize="large
       size={icoSize}
       icon={{
         icon: socialNetwork.icon ? socialNetwork.icon : RiCrossLine,
+        
       }}
+      baseUrl={socialNetwork.baseUrl}
+      linkType={socialNetwork.type}
     />
   ));
 

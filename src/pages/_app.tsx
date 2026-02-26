@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "leaflet/dist/leaflet.css";
 import { Anton, Inter } from "next/font/google";
 import type { AppProps } from "next/app";
 

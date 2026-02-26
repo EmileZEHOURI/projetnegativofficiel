@@ -45,8 +45,8 @@ export const HighPhotoView = ({
 
         {/* Texte qui suit le même max-width/padding que le burger */}
 
-        <Container className="h-full flex flex-col items-start justify-end pb-10 ">
-          <Typography variant="h6" component="h1" theme="white" className="">
+        <Container className="h-full flex flex-col items-start justify-end pb-10  ">
+          <Typography variant="h6" component="h1" theme="white" className="tracking-[0.30em]">
             {surtitle}
           </Typography>
 

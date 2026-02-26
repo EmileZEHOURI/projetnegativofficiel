@@ -1,5 +1,5 @@
 import { Container } from "@/ui/components/container/container";
-import { HighPhotoView } from "../../landing-page/components/high-photo/high-photo.view";
+import { HighPhotoView } from "../../../components/high-photo/high-photo.view";
 
 
 
@@ -9,7 +9,7 @@ export const AgendaPageView = () => {
       <HighPhotoView
         position="left"
         title="Agenda"
-        surtitle= " I N F O R M A T I O N S P R A T I Q U E S "
+        surtitle= " INFORMATIONS PRATIQUES "
         imageSrc="/assets/img-negativ/img/photo-agenda.jpg"
         alt="Photo du Club"
       />

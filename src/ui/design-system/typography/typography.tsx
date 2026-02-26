@@ -62,7 +62,7 @@ export const Typography = ({
       break;
     case "h6":
       variantStyles = "text-xl";
-      fontStyles=" font-heading uppercase tracking-wide";
+      fontStyles=" font-heading  tracking-wide";
       break;
     case "h7":
       variantStyles = "text-2xl";

@@ -52,7 +52,7 @@ const footerInformationsLinks: AppLinks[] = [
   },
   {
     label: "Les Gymnases",
-    baseUrl: "informations-pratiques/gymnases",
+    baseUrl: "/informations-pratiques/gymnases",
     type: LinkTypes.INTERNAL,
   },
   {

@@ -3,7 +3,15 @@ import { HighPhotoView } from "../../components/high-photo/high-photo.view";
 import { Container } from "@/ui/components/container/container";
 import Image from "next/image";
 import { GalleryMosaicView } from "./component/gallery-mosaic/gallery-mosaic.view";
-import { SlideShowView } from "./component/slide-show/slide-show.view";
+import ImageSlideWrapper from "@/ui/components/image-slide-wrapper/image-slide-wrapper";
+
+const images = [
+  { src: "/assets/img-negativ/img/photo-mosaic-1.jpg", alt: "Image 1" },
+  { src: "/assets/img-negativ/img/photo-mosaic-2.jpg", alt: "Image 2" },
+  { src: "/assets/img-negativ/img/photo-mosaic-3.png", alt: "Image 3" },
+  { src: "/assets/img-negativ/img/photo-group-1.jpg", alt: "Image 4" },
+  { src: "/assets/img-negativ/img/photo-group-2.jpg", alt: "Image 5" },
+];
 
 export const ClubPageView = () => {
   return (
@@ -56,7 +64,7 @@ export const ClubPageView = () => {
           </Typography>
           <Typography
             variant="caption1"
-            component="p"
+            component="span"
             theme="black"
             className="mt-14 w-[800px] leading-10"
           >
@@ -152,7 +160,7 @@ export const ClubPageView = () => {
           <div>Something</div>
 
           <div className="justify-center">
-            <SlideShowView />
+            <ImageSlideWrapper images={images}/>
           </div>
         </div>
       </Container>

@@ -54,12 +54,12 @@ const DEFAULT_SECTIONS: SidebarSection[] = [
   {
     title: "Informations Pratiques",
     items: [
-      { label: "L'Inscription", href: "/signup" },
-      { label: "Les Gymnases", href: "/login" },
-      { label: "Taris & Aides", href: "/login" },
-      { label: "Les Permanences", href: "/login" },
-      { label: "Les Horaires", href: "/login" },
-      { label: "Dates De Reprises", href: "/login" },
+      { label: "L'Inscription", href: "/informations-pratiques/inscription" },
+      { label: "Les Gymnases", href: "/informations-pratiques/gymnases" },
+      { label: "Taris & Aides", href: "/informations-pratiques/tarifs-aides" },
+      { label: "Les Permanences", href: "/informations-pratiques/permanences" },
+      { label: "Les Horaires", href: "/informations-pratiques/horaires" },
+      { label: "Dates De Reprises", href: "/informations-pratiques/dates-reprises" },
     ],
   },
   {

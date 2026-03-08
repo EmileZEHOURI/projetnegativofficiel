@@ -6,8 +6,11 @@ import Link from "next/link";
 import { IconType } from "react-icons";
 
 interface Props {
-  size?: "small" | "medium" | "large" | "bpmedium";
+  size?: "small" | "medium" | "medium-btn-header" | "large";
   variant?:
+    | "button-classic"
+    | "bpwhite" //je travaille sur ça
+    | "bpblack"
     | "accent"
     | "secondary"
     | "outline"
@@ -15,10 +18,16 @@ interface Props {
     | "ico"
     | "black"
     | "white"
-    | "bpwhite" //je travaille sur ça
     | "circle"
     | "circleLight"
     | "isLight";
+  stretch?:
+    | "ultra-condensed"
+    | "condensed"
+    | "normal"
+    | "extended"
+    | "ultra-extended";
+  weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
   icon?: IconProps;
   iconTheme?: "accent" | "secondary" | "gray" | "black" | "white" | "empty";
   iconPosition?: "left" | "right";
@@ -29,11 +38,13 @@ interface Props {
   linkType?: LinkType;
   onClick?: () => void;
   action?: Function;
+  className?: string;
 }
 
 export const Button = ({
   size = "medium",
   variant = "accent",
+  stretch,
   icon,
   iconTheme = "accent",
   iconPosition = "right",
@@ -41,14 +52,32 @@ export const Button = ({
   isLoading = false,
   children,
   baseUrl,
+  className,
+  weight = 400,
   action = () => {},
   linkType = "internal",
 }: Props) => {
   let variantStyles: string = "",
-    sizeStyles: string = "",
     icoSize: number = 0;
+  let textSize = "";
+  let padding = "";
+  let iconBox = "";
+  let fontFamily = "";
+  let stretchClass = "";
 
   switch (variant) {
+    case "button-classic":
+      variantStyles =
+        " bg-transparent border border-black text-black  whitespace-nowrap shrink-0  hover:bg-white/10 transition";
+      break;
+    case "bpwhite":
+      variantStyles =
+        " bg-transparent border border-white text-white  whitespace-nowrap shrink-0 rounded-[2rem] hover:bg-white/10 transition";
+      break;
+    case "bpblack":
+      variantStyles =
+        " bg-transparent border border-black text-black  whitespace-nowrap shrink-0 rounded-[2rem] hover:bg-white/10 transition";
+      break;
     case "accent": //Default
       variantStyles = "bg-primary hover:bg-primary-400 text-white rounded";
       break;
@@ -70,10 +99,7 @@ export const Button = ({
       variantStyles =
         "bg-gray-400 border border-gray-500 text-gray-600 rounded cursor-not-allowed";
       break;
-    case "bpwhite":
-      variantStyles =
-        " bg-transparent border border-white text-white  whitespace-nowrap shrink-0 rounded-[2rem] hover:bg-white/10 transition";
-      break;
+
     case "ico":
       if (iconTheme === "accent") {
         variantStyles = "text-white";
@@ -91,6 +117,7 @@ export const Button = ({
         variantStyles = " text-gray-900 ";
       }
       break;
+
     case "circle":
       variantStyles =
         "flex w-[68px] h-[68px] rounded-full border border-white/70 items-center justify-center p-0 bg-transparent hover:bg-white/10 transition";
@@ -104,40 +131,62 @@ export const Button = ({
         "bg-transparent border border-black text-primary whitespace-nowrap shrink-0 rounded-[2rem] hover:bg-black hover:text-white transition";
   }
 
-  switch (size) {
-    case "bpmedium":
-      sizeStyles = `text-caption4 font-medium ${
-        variant === "bpwhite"
-          ? "px-[38px] py-[16px] flex flex-row  items-center justify-end "
-          : "px-[18px] py-[15px]"
-      }`;
+  switch (stretch) {
+  case "ultra-condensed":
+    stretchClass = "font-ultra-condensed";
+    break;
+  case "condensed":
+    stretchClass = "font-condensed";
+    break;
+  case "extended":
+    stretchClass = "font-extended";
+    break;
+  case "ultra-extended":
+    stretchClass = "font-ultra-extended";
+    break;
+  default:
+    stretchClass = "font-normal-stretch";
+}
 
-      break;
+
+  const isIcon = variant === "ico" || variant === "circle"|| variant === "circleLight";
+
+  switch (size) {
     case "small":
-      sizeStyles = `text-caption3 font-medium ${
-        variant === "ico" || variant === "circle"
-          ? "flex items-center justify-center w-[40px] h-[40px]"
-          : "px-[14px] py-[11px]"
-      }`;
+      textSize = "text-caption3";
+      padding = "px-4 py-3";
+      iconBox = "w-[40px] h-[40px]";
       icoSize = 18;
       break;
-    case "medium": //Default
-      sizeStyles = `text-caption2 font-medium ${
-        variant === "ico" || variant === "circle"
-          ? "flex items-center justify-center w-[90px] h-[90px]"
-          : "px-[18px] py-[15px]"
-      }`;
+
+    case "medium":
+      textSize = "text-caption2";
+      padding = "p-[1rem]";
+      iconBox = "w-[90px] h-[90px]";
       icoSize = 20;
       break;
+
+    case "medium-btn-header":
+      textSize = "text-caption2";
+      padding = "p-[1rem]";
+      iconBox = "w-[90px] h-[90px]";
+      icoSize = 20;
+      break;
+
     case "large":
-      sizeStyles = `text-caption1 font-medium ${
-        variant === "ico" || variant === "circle"
-          ? " flex items-center justify-center w-[60px] h-[60px]"
-          : "px-[22px] py-[12px]"
-      }`;
+      textSize = "text-caption1";
+      padding = "px-10 py-6";
+      iconBox = "w-[60px] h-[60px]";
       icoSize = 30;
       break;
+
+    default:
+      textSize = "text-caption2";
+      padding = "px-4 py-3";
+      icoSize = 20;
+      break;
   }
+  
 
   const Icon: IconType | undefined = icon?.icon;
 
@@ -152,6 +201,7 @@ export const Button = ({
           )}
         </div>
       )}
+
       <div className={clsx(isLoading && "invisible")}>
         {Icon && variant === "ico" ? (
           <Icon size={icoSize} className="block" />
@@ -174,34 +224,62 @@ export const Button = ({
     action?.();
   };
 
-  const buttonElement = (
-    <>
-      <button
-        type="button"
-        className={clsx(
-          variantStyles,
-          sizeStyles,
-          isLoading && "cursor-wait",
-          "relative animate-none",
-        )}
-        onClick={handleClick}
-        disabled={disabled || isLoading}
-      >
-        {buttonContent}
-      </button>
-    </>
+  const sharedStyle = { fontWeight: weight };
+
+  const sizeStyles = clsx(
+    textSize || "text-caption2",
+    fontFamily,
+    isIcon
+      ? clsx("flex items-center justify-center", iconBox || "w-[40px] h-[40px]")
+      : padding || "px-4 py-3",
   );
 
+  const classes = clsx(
+    "inline-flex items-center justify-center font-anybody",
+    variantStyles,
+    sizeStyles,
+     stretchClass,
+    
+    isLoading && "cursor-wait",
+    "relative animate-none", 
+    className
+  );
+
+  // ✅ Si c’est un lien, on rend un <a> / <Link> avec les mêmes classes
   if (baseUrl) {
     if (linkType === LinkTypes.EXTERNAL) {
       return (
-        <a href={baseUrl} target="_blank">
-          {buttonElement}
+        <a
+          href={baseUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes}
+          style={sharedStyle}
+        >
+          {buttonContent}
         </a>
       );
-    } else {
-      return <Link href={baseUrl}>{buttonElement} </Link>;
     }
+    
+
+    return (
+      <Link href={baseUrl} className={classes} style={sharedStyle}>
+        {buttonContent}
+      </Link>
+    );
   }
-  return buttonElement;
+
+  // ✅ Sinon, on rend un vrai <button>
+  return (
+    <button
+      type="button"
+      className={classes } 
+      style={sharedStyle}
+      onClick={handleClick}
+      disabled={disabled || isLoading}
+      
+    >
+      {buttonContent}
+    </button>
+  );
 };

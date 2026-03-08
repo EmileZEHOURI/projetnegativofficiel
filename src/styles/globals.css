@@ -1,16 +1,10 @@
-
-
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   @apply font-sans;
 }
-
 
 a:hover {
   @apply text-primary;
@@ -34,3 +28,24 @@ a:hover {
   -webkit-text-stroke: 1px black;
 }
 
+/* Anybody: contrôle direct de l’axe de largeur */
+.font-ultra-condensed {
+  font-variation-settings: "wdth" 50;
+   font-stretch: 50%;
+}
+.font-condensed {
+  font-variation-settings: "wdth" 75;
+  font-stretch: 75%;
+}
+.font-normal-stretch {
+  font-variation-settings: "wdth" 100;
+  font-stretch: 100%;
+}
+.font-extended {
+  font-variation-settings: "wdth" 125;
+  font-stretch: 125%;
+}
+.font-ultra-extended {
+  font-variation-settings: "wdth" 150;
+   font-stretch: 150%;
+}

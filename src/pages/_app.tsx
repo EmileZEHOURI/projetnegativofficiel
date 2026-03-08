@@ -1,23 +1,25 @@
 import "@/styles/globals.css";
 import "leaflet/dist/leaflet.css";
-import { Anton, Inter } from "next/font/google";
+import { Anton, Inter, Anybody } from "next/font/google";
 import type { AppProps } from "next/app";
 
-const anton = Anton({
+const anybody = Anybody({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-anton",
+  variable: "--font-anybody",
+axes: ["wdth"],
+  display: "swap",
 });
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
   variable: "--font-inter",
+  display: "swap",
 });
+
 
 export default function App({ Component, pageProps }: AppProps) {
   return(
-    <div className={`${anton.variable} ${inter.variable}`}>
+    <div className={`${anybody.variable} font-anybody`}>
       <Component {...pageProps} />
     </div>
   ) 

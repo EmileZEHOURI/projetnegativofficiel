@@ -1,7 +1,6 @@
 import { Container } from "@/ui/components/container/container";
 import { Navigation } from "@/ui/components/navigation/navigation";
 import { Typography } from "@/ui/design-system/typography/typography";
-import clsx from "clsx";
 import Image from "next/image";
 
 interface Props {
@@ -44,14 +43,14 @@ export const HighPhotoView = ({
         <Navigation variant="overlay" />
 
         {/* Texte qui suit le même max-width/padding que le burger */}
-
+ 
         <Container className="h-full flex flex-col items-start justify-end pb-10  ">
-          <Typography variant="h6" component="h1" theme="white" className="tracking-[0.30em]">
+          <Typography variant="h2-page-title" component="h1" theme="white" className="tracking-[0.30em]">
             {surtitle}
           </Typography>
 
           <Typography
-            variant="h3"
+            variant="h2-page-title"
             component="h1"
             theme="white"
             className=" text-shadow-lg mt-[40px]"

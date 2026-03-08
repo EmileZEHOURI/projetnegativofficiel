@@ -2,97 +2,97 @@ import clsx from "clsx";
 
 interface Props {
   variant?:
-    | "display"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6"
-    | "h7"
-    | "h8"
-    | "caption1"
-    | "caption2"
-    | "caption3"
-    | "caption4";
+    | "h2-page-title"
+    | "h2-article-title"
+    | "h3-page-title"
+    | "header-btn"
+    | "header-content"
+    | "post-informations"
+    | "projet-title"
+    | "projet-surtitle"
+    | "projet-footer"
+    | "paragraph"
+    | "paragraph-quote";
+
   component?: "h1" | "h2" | "h3" | "h4" | "h5" | "div" | "span" | "li" | "p";
   theme?: "black" | "gray" | "white" | "primary" | "secondary";
-  weight?: "regular" | "medium";
+  weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
   className?: string;
   children: React.ReactNode;
-  font?: "heading" | "body"
+  stretch?:
+    | "ultra-condensed"
+    | "condensed"
+    | "normal"
+    | "extended"
+    | "ultra-extended";
+  transform?: "uppercase" | "lowercase" | "capitalize" | "normal-case";
 }
 
 export const Typography = ({
-  variant = "h3",
+  variant = "paragraph",
   component: Component = "div",
   theme = "black",
-  weight = "regular",
+  weight = 400,
+  stretch = "normal",
   className,
   children,
+  transform = "normal-case",
 }: Props) => {
-  let variantStyles: string = "",
-    colorStyles: string = "",
-    fontStyles: string = "";
+  let variantStyles = "";
+  let colorStyles = "";
+  let fontStyles = "";
+  let stretchStyles: string = "";
 
   switch (variant) {
-    case "display":
-      variantStyles = "text-8xl";
-      fontStyles = "font-heading uppercase tracking-wide";
+    case "h2-page-title":
+      variantStyles = "text-h2-page-title";
+      fontStyles = "uppercase tracking-wide";
       break;
-    case "h1":
-      variantStyles = "text-7xl";
-      fontStyles = "font-heading uppercase tracking-wide";
+    case "h2-article-title":
+      variantStyles = "text-h2-article-title";
+      fontStyles = "uppercase tracking-wide";
       break;
-    case "h2":
-      variantStyles = "text-6xl";
-      fontStyles = "font-heading uppercase tracking-wide";
+    case "h3-page-title":
+      variantStyles = "text-h3-page-title";
+      fontStyles = "uppercase tracking-wide";
       break;
-    case "h3": //Default
-      variantStyles = "text-5xl";
-      fontStyles = "font-heading uppercase tracking-wide";
+    case "header-btn":
+      variantStyles = "text-header-btn";
+      fontStyles = "uppercase tracking-wide";
       break;
-    case "h4":
-      variantStyles = "text-4xl";
-      fontStyles = "font-heading uppercase tracking-wide";
+    case "header-content":
+      variantStyles = "text-header-content";
+      fontStyles = "uppercase tracking-wide";
       break;
-    case "h5":
-      variantStyles = "text-3xl";
-      fontStyles = "font-heading uppercase tracking-wide";
+    case "post-informations":
+      variantStyles = "text-post-informations";
+      fontStyles = "uppercase tracking-wide";
       break;
-    case "h6":
-      variantStyles = "text-xl";
-      fontStyles=" font-heading  tracking-wide";
+    case "projet-title":
+      variantStyles = "text-projet-title";
+      fontStyles = "uppercase tracking-wide";
       break;
-    case "h7":
-      variantStyles = "text-2xl";
-      fontStyles = "font-body";
+    case "projet-surtitle":
+      variantStyles = "text-projet-surtitle";
+      fontStyles = "uppercase tracking-wide";
       break;
-    case "h8":
-      variantStyles = "text-lg";
-      fontStyles = "font-body";
+    case "projet-footer":
+      variantStyles = "text-projet-footer";
+      fontStyles = "uppercase tracking-wide";
       break;
-    case "caption1":
-      variantStyles = "text-caption1";
-      fontStyles = "font-body";
+    case "paragraph":
+      variantStyles = "text-paragraph";
+      fontStyles = "tracking-wide";
       break;
-    case "caption2":
-      variantStyles = "text-caption2";
-      fontStyles = "font-body";
-      break;
-    case "caption3":
-      variantStyles = "text-caption3";
-      fontStyles = "font-body";
-      break;
-    case "caption4":
-      variantStyles = "text-caption4";
-      fontStyles = "font-body";
+    case "paragraph-quote":
+      variantStyles = "text-paragraph-quote";
+      fontStyles = "uppercase tracking-wide";
       break;
   }
 
   switch (theme) {
-    case "black": //Default
-      colorStyles = "text-gray";
+    case "black":
+      colorStyles = "text-gray-900";
       break;
     case "gray":
       colorStyles = "text-gray-700";
@@ -106,21 +106,38 @@ export const Typography = ({
     case "secondary":
       colorStyles = "text-secondary";
       break;
+  }
 
+  switch (stretch) {
+    case "ultra-condensed":
+      stretchStyles = "font-ultra-condensed";
+      break;
+    case "condensed":
+      stretchStyles = "font-condensed";
+      break;
+    case "extended":
+      stretchStyles = "font-extended";
+      break;
+    case "ultra-extended":
+      stretchStyles = "font-ultra-extended";
+      break;
     default:
+      stretchStyles = "font-normal-stretch";
       break;
   }
 
   return (
     <Component
       className={clsx(
+        "font-anybody",
+        transform, // 👈 IMPORTANT
         variantStyles,
         colorStyles,
         fontStyles,
-        weight === "medium" && "font-medium",
+        stretchStyles, // 👈 IMPORTANT
         className,
-        theme,
       )}
+      style={{ fontWeight: weight }} // ✅ ICI
     >
       {children}
     </Component>

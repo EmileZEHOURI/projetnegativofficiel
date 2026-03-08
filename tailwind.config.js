@@ -3,133 +3,49 @@ module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/styles/**/*.css",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+
   theme: {
+    // Tu peux laisser tes fontSize ici (comme tu l'avais)
     fontSize: {
-      "8xl": [
-        "120px",
-        {
-          lineHeight: "120px",
-          letterSpacing: "-6px",
-          fontWeight: "500",
-        },
-      ],
-      "7xl": [
-        "64px",
-        {
-          lineHeight: "80px",
-          letterSpacing: "-4.5px",
-          fontWeight: "600",
-        },
-      ],
-      "6xl": [
-        "48px",
-        {
-          lineHeight: "60px",
-          letterSpacing: "-2.5px",
-          fontWeight: "500",
-        },
-      ],
-      "5xl": [
-        "40px",
-        {
-          lineHeight: "40px",
-          letterSpacing: "-1.6000000023841858px",
-          fontWeight: "500",
-        },
-      ],
-      "4xl": [
-        "36px",
-        {
-          lineHeight: "44px",
-          letterSpacing: "-1.2000000047683px",
-          fontWeight: "500",
-        },
-      ],
-      "3xl": [
-        "32px",
-        {
-          lineHeight: "34px",
-          letterSpacing: "-0.000000011920929px",
-          fontWeight: "500",
-        },
-      ],
-      "2xl": [
-        "24px",
-        {
-          lineHeight: "30px",
-          letterSpacing: "-1px",
-          fontWeight: "400",
-        },
-      ],
-      xl: [
-        "20px",
-        {
-          lineHeight: "30px",
-          letterSpacing: "-1px",
-          fontWeight: "400",
-        },
-      ],
-      lg: [
-        "16px",
-        {
-          lineHeight: "30px",
-          letterSpacing: "-0.000000011920929px",
-          fontWeight: "400",
-        },
-      ],
-      caption1: [
-        "24px",
-        {
-          lineHeight: "24px",
-          letterSpacing: "-0.6px",
-          fontWeight: "400",
-        },
-      ],
-      caption2: [
-        "22px",
-        {
-          lineHeight: "20px",
-          letterSpacing: "-0.3px",
-          fontWeight: "400",
-        },
-      ],
-      caption3: [
-        "20px",
-        {
-          lineHeight: "18px",
-          letterSpacing: "-0.5px",
-          fontWeight: "400",
-        },
-      ],
-      caption4: [
-        "13px",
-        {
-          lineHeight: "15px",
-          letterSpacing: "-0.2px",
-          fontWeight: "400",
-        },
-      ],
+      "h2-page-title": ["3.5em", { lineHeight: 1.1 }],
+      "h2-article-title": ["1.2em", { lineHeight: 1.1 }],
+      "h3-page-title" : ["2em",{lineHeight: 1.1}],
+      "header-btn": ["0.6em", { lineHeight: 1.1 }],
+      "header-content": ["0.6em", { lineHeight: 1.1 }],
+      "post-informations": ["0.6em", { lineHeight: 1.1 }],
+      "projet-title": ["2.2em", { lineHeight: 1.1 }],
+      "projet-surtitle": ["0.2em", { lineHeight: 1.1 }],
+      "projet-footer": ["0.9em", { lineHeight: 1.1 }],
+      paragraph: ["1em", { lineHeight: 1.5 }],
+      "paragraph-quote": ["1.75em", { lineHeight: 1.2 }],
+
+      caption3: ["0.6em", { lineHeight: 1.1 }],
+      caption2: ["0.8em", { lineHeight: 1.1 }],
+      caption1: ["1em", { lineHeight: 1.1 }],
+      
     },
 
     borderRadius: {
       DEFAULT: "10px",
       full: "9999px",
     },
+
     extend: {
       colors: {
         white: "#ffffff",
-        primary:{
-          100:"#f7997f",
-          200:"#f68567",
-          300:"#f4724f",
-          DEFAULT:"#f35f37",
-          500:"#f24c1f",
-          600:"#e93d0e",
+
+        primary: {
+          100: "#f7997f",
+          200: "#f68567",
+          300: "#f4724f",
+          DEFAULT: "#f35f37",
+          500: "#f24c1f",
+          600: "#e93d0e",
           700: "#d1360d",
         },
+
         primarybis: {
           100: "#ffae66",
           200: "#ffa14c",
@@ -138,6 +54,7 @@ module.exports = {
           DEFAULT: "#FF7900",
           600: "#e56c00",
         },
+
         secondary: {
           100: "#af80d8",
           200: "#a26bd2",
@@ -156,11 +73,12 @@ module.exports = {
           DEFAULT: "#1D1D1D",
         },
       },
+
       fontFamily: {
-        heading: ["var(--font-anton)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],   //Je veux qu'il soit en Arial
+        anybody: ["var(--font-anybody)", "sans-serif"],
       },
     },
   },
+
   plugins: [],
 };

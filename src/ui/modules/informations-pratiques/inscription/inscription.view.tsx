@@ -3,42 +3,30 @@ import { Typography } from "@/ui/design-system/typography/typography";
 import { Button } from "@/ui/design-system/button/button";
 import Image from "next/image";
 import { PreFooter } from "@/ui/components/prefooter/prefooter";
+import { PostHeader } from "@/ui/components/postheader/postheader";
 
 export const InscriptionPageView = () => {
   return (
     <>
       <Container className="flex flex-col h-full pl-[106px] pr-[106px] items-center  ">
         <div className="">
-          <Typography
-            variant="h5"
-            component="h5"
-            theme="primary"
-            className="mt-10 justify-center items-center text-center"
-          >
-            INFORMATIONS PRATIQUES
-          </Typography>
-          <Typography
-            variant="h2"
-            component="h2"
-            theme="primary"
-            className="mt-6 justify-center items-center text-center"
-          >
-            S'INSCRIRE
-          </Typography>
+          <PostHeader highText="INFORMATIONS PRATIQUES" lowText="S'INSCRIRE"/>
         </div>
         <div className="">
           <Typography
-            variant="h2"
+            variant="h2-article-title"
             component="h2"
             theme="gray"
+            weight={800}
             className="mt-[124px] justify-center items-center text-center"
           >
             LES RÉ-INSCRIPTIONS POUR LA SAISON 2025-2026 SONT OUVERTES !
           </Typography>
           <Typography
-            variant="caption3"
+            variant="paragraph"
             component="p"
             theme="gray"
+            weight={400}
             className="mt-10 justify-center items-center text-center"
           >
             Jusqu’au 20 juin inclus, les ré-inscriptions se font au même tarif
@@ -47,17 +35,20 @@ export const InscriptionPageView = () => {
           </Typography>
 
           <Typography
-            variant="h2"
+            variant="h2-article-title"
             component="h2"
+            weight={800}
             theme="black"
-            className="mt-10 justify-center items-center text-center"
+            className="mt-10 mb-10 justify-center items-center text-center"
           >
             COMMENT S'INSCRIRE :
           </Typography>
+
           <Typography
-            variant="caption3"
+            variant="paragraph"
             component="span"
             theme="gray"
+            weight={400}
             className="mt-10 justify-center items-center text-center"
           >
             <ol className="list-decimal pl-6 space-y-2">
@@ -81,21 +72,25 @@ export const InscriptionPageView = () => {
           </Typography>
         </div>
         <div className="mt-10">
-          <Button variant="accent" size="large" baseUrl="">
+          <Button size="small"
+                variant="button-classic"
+                weight={900}
+                stretch="extended"
+                className="tracking-tight py-[1rem] px-[3em] text-primary mb-10">
             CLIQUEZ ICI POUR FAIRE VOTRE INSCRIPTION
           </Button>
         </div>
         <div>
           <Image
-            src="/assets/img-negativ/img/photo-mosaic-1.jpg"
+            src="/assets/img-negativ/img-sony/photo-group-landscape-sony-5.jpg"
             alt="Image d'inscription"
-            width={1108}
-            height={740}
+            width={640}
+            height={480}
           />
         </div>
         <div className="mt-10">
           <Typography
-            variant="caption3"
+            variant="paragraph"
             component="span"
             theme="black"
             className=" justify-center items-center text-center"
@@ -132,7 +127,7 @@ export const InscriptionPageView = () => {
         </div>
         <div>
           <Typography
-            variant="h4"
+            variant="paragraph"
             component="h4"
             theme="black"
             className="mt-[118px] flex justify-center gap-4 text-primary"
@@ -150,7 +145,7 @@ export const InscriptionPageView = () => {
             </a>
           </Typography>
           <Typography
-            variant="h4"
+            variant="paragraph"
             component="h4"
             theme="black"
             className="mt-1 flex justify-center gap-4 text-primary"

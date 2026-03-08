@@ -16,20 +16,18 @@ export const Footer = () => {
     <FooterLink key={uuidv4()} data={colomnLinks} />
   ));
 
-  
-
   return (
-    <div className="bg-black ">
+    <div className="bg-black ">  
       <Container className="flex items-start gap-16 pt-16">
         <a href="/" target="_blank">
-          <Logo size="xl-footer"/>
+          <Logo size="xl-footer" />
         </a>
         {/* Colonne Le Club*/}
         <div className="">
           <Typography
             theme="white"
             variant="caption2"
-            weight="medium"
+            weight={400}
             className="pb-5"
           >
             INSCRIPTIONS
@@ -46,7 +44,7 @@ export const Footer = () => {
             <Typography
               theme="white"
               variant="caption2"
-              weight="medium"
+              weight={400}
               className="pb-5"
             >
               LES PROJETS
@@ -54,7 +52,7 @@ export const Footer = () => {
             <Typography
               theme="white"
               variant="caption2"
-              weight="medium"
+              weight={400}
               className="pb-5"
             >
               LES ACTUALITES
@@ -62,17 +60,17 @@ export const Footer = () => {
             <Typography
               theme="white"
               variant="caption2"
-              weight="medium"
+              weight={400}
               className="pb-5"
             >
               NOUS CONTACTER
             </Typography>
           </div>
           {/*Bloc Réseau Sociaux*/}
-  
-            <div className="mt-6">
-              <SocialNetworksButtons className="flex items-center gap-1" />
-            </div>
+
+          <div className="mt-6">
+            <SocialNetworksButtons className="flex items-center gap-1" />
+          </div>
         </div>
       </Container>
 
@@ -125,18 +123,21 @@ const FooterLink = ({ data }: footerLinkProps) => {
   ));
 
   return (
-    <div className="min-w-[190px]">
-      <Typography
-        theme="white"
-        variant="caption2"
-        weight="medium"
-        className="pb-5"
-      >
-        {data.label}
-      </Typography>
-      <Typography theme="gray" variant="caption3" className="space-y-4">
-        {linksList}
-      </Typography>
+    <div className="">
+  
+      <div className="min-w-[190px]">
+        <Typography
+          theme="white"
+          variant="caption2"
+          weight={400}
+          className="pb-5"
+        >
+          {data.label}
+        </Typography>
+        <Typography theme="gray" variant="caption3" className="space-y-4">
+          {linksList}
+        </Typography>
+      </div>
     </div>
   );
 };

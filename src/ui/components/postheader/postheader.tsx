@@ -1,33 +1,46 @@
+"use client";
+
+import { Container } from "@/ui/components/container/container";
 import { Typography } from "@/ui/design-system/typography/typography";
+import { DropdownMenu }  from "../dropdown-menu/dropdown-menu";
+
+
 
 interface Props {
-  highText: string;
-  lowText: string;
+  title: string;
 }
 
-export const PostHeader = ({ highText, lowText }: Props) => {
+export const infosPratiquesLinks = [
+  { label: "TARIFS & AIDES", href: "/informations-pratiques/tarifs-aides" },
+  { label: "DATES DE REPRISE", href: "/informations-pratiques/dates-reprises" },
+  { label: "NOUS CONTACTER", href: "/nous-contacter" },
+  { label: "S’INSCRIRE", href: "/informations-pratiques/inscription" },
+  { label: "LES HORAIRES", href: "/informations-pratiques/horaires" },
+  { label: "LES PERMANENCES", href: "/informations-pratiques/permanences" },
+];
+
+export const PostHeader = ({ title }: Props) => {
   return (
-    <section className="mt-1 mb-1 items-center text-center">
-      <Typography
-        variant="h2-article-title"
-        component="h2"
-        theme="primary"
-        stretch="condensed"
-        className="mt-10 justify-center items-center text-center tracking-[0.3em]"
-        weight={900}
-      >
-        {highText}
-      </Typography>
-      <Typography
-        variant="h3-page-title"
-        component="h2"
-        theme="primary"
-        weight={900}
-        stretch="extended"
-        className="mt-6 justify-center items-center text-center tracking-[-0.02em]"
-      >
-        {lowText}
-      </Typography>
+    <section className="mt-1 mb-1">
+      <Container className="flex flex-col pb-10 text-center">
+        <div className="mt-20">
+          <DropdownMenu
+            label="INFORMATIONS PRATIQUES"
+            items={infosPratiquesLinks}
+          />
+        </div>
+
+        <Typography
+          variant="h2-page-title"
+          component="h1"
+          theme="primary"
+          className="mt-[10px] text-shadow-lg tracking-tight"
+          stretch="extended"
+          weight={800}
+        >
+          {title}
+        </Typography>
+      </Container>
     </section>
   );
 };

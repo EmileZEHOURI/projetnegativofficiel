@@ -4,155 +4,162 @@ import { Button } from "@/ui/design-system/button/button";
 import Image from "next/image";
 import { PreFooter } from "@/ui/components/prefooter/prefooter";
 import { PostHeader } from "@/ui/components/postheader/postheader";
+import {
+  INSCRIPTION_DETAILS,
+  INSCRIPTION_INTRO,
+  INSCRIPTION_STEPS,
+} from "./inscription-data";
 
 export const InscriptionPageView = () => {
   return (
     <>
-      <Container className="flex flex-col h-full pl-[106px] pr-[106px] items-center  ">
-        <div className="">
-          <PostHeader highText="INFORMATIONS PRATIQUES" lowText="S'INSCRIRE"/>
-        </div>
-        <div className="">
-          <Typography
-            variant="h2-article-title"
-            component="h2"
-            theme="gray"
-            weight={800}
-            className="mt-[124px] justify-center items-center text-center"
-          >
-            LES RÉ-INSCRIPTIONS POUR LA SAISON 2025-2026 SONT OUVERTES !
-          </Typography>
-          <Typography
-            variant="paragraph"
-            component="p"
-            theme="gray"
-            weight={400}
-            className="mt-10 justify-center items-center text-center"
-          >
-            Jusqu’au 20 juin inclus, les ré-inscriptions se font au même tarif
-            que la saison dernière. Passé le 20 juin, sans exception, les
-            inscriptions basculeront sur la nouvelle tarification
-          </Typography>
-
-          <Typography
-            variant="h2-article-title"
-            component="h2"
-            weight={800}
-            theme="black"
-            className="mt-10 mb-10 justify-center items-center text-center"
-          >
-            COMMENT S'INSCRIRE :
-          </Typography>
-
-          <Typography
-            variant="paragraph"
-            component="span"
-            theme="gray"
-            weight={400}
-            className="mt-10 justify-center items-center text-center"
-          >
-            <ol className="list-decimal pl-6 space-y-2">
-              <li>
-                Faire la pré-inscription en ligne en cliquant sur le bouton
-                ci-dessous
-              </li>
-              <li>
-                Vous recevrez un e-mail de confirmation immédiatement après
-                (vérifiez vos spams si vous ne recevez rien).
-              </li>
-              <li>
-                Effectuez le paiement de la cotisation en ligne, ou lors de
-                l’une de nos permanences.
-              </li>
-              <li>
-                La FFBB vous envoie un e-mail (sous 48h) pour saisir votre
-                e-licence. 
-              </li>
-            </ol>
-          </Typography>
-        </div>
-        <div className="mt-10">
-          <Button size="small"
-                variant="button-classic"
-                weight={900}
-                stretch="extended"
-                className="tracking-tight py-[1rem] px-[3em] text-primary mb-10">
-            CLIQUEZ ICI POUR FAIRE VOTRE INSCRIPTION
-          </Button>
-        </div>
+      <Container className="flex flex-col h-full pl-[106px] pr-[106px] items-center">
         <div>
-          <Image
-            src="/assets/img-negativ/img-sony/photo-group-landscape-sony-5.jpg"
-            alt="Image d'inscription"
-            width={640}
-            height={480}
-          />
+          <PostHeader title="S'INSCRIRE" />
         </div>
-        <div className="mt-10">
-          <Typography
-            variant="paragraph"
-            component="span"
-            theme="black"
-            className=" justify-center items-center text-center"
-          >
-            <p>
-              Les inscriptions sont libres en catégories Loisirs et nécessitent
-              un mot de passe en catégories Compétitions.  Les mots de passe
-              sont donnés par les coachs après sélection lors de nos
-              détections. Une fois les détections terminées vous pouvez
-              contacter directement le coach (mails indiqué sur cette page) et
-              voir si jamais une place est encore disponible dans son équipe.
-            </p>
 
-            <p>
-              <br />
-              Une séance d’essai est bien sûr possible pour les catégories
-              Loisirs, avant de finaliser votre inscription. Nous vous demandons
-              pour ça de vous pré-inscrire et de valider le paiement une fois
-              l’essai effectué. Les séances d’essais sont permises jusqu’à la
-              fin septembre.
-            </p>
+        <div className="max-w-3xl px-6">
+          <div className="self-start">
+            <Typography
+              variant="h2-article-title"
+              component="h2"
+              theme="secondary"
+              weight={800}
+              className="mt-[124px] self-start tracking-tighter"
+              stretch="extended"
+            >
+              LES RÉ-INSCRIPTIONS POUR LA SAISON 2025-2026 SONT OUVERTES !
+            </Typography>
 
-            <p>
-              <br />
-              Si jamais vous avez des questions précises vous pouvez consultez
-              les questions courantes 
-            </p>
+            <Typography
+              variant="caption2"
+              component="div"
+              theme="gray"
+              weight={300}
+              className="mt-10 self-start"
+            >
+              {INSCRIPTION_INTRO}
+            </Typography>
+
+            <Typography
+              variant="h2-article-title"
+              component="h2"
+              weight={800}
+              theme="primary"
+              className="mt-10 mb-10 self-start tracking-tighter"
+              stretch="extended"
+            >
+              COMMENT S'INSCRIRE :
+            </Typography>
+
+            <Typography
+              variant="paragraph"
+              component="div"
+              weight={400}
+              className="mt-10 self-start"
+            >
+              <ol className="list-decimal pl-4 space-y-2 text-secondary-500">
+                {INSCRIPTION_STEPS.map((step, i) => (
+                  <li key={i} className="text-secondary font-bold">
+                    {step}
+                  </li>
+                ))}
+              </ol>
+            </Typography>
+          </div>
+          <div className="mt-10 flex justify-center">
+            <Button
+              size="small"
+              variant="accent"
+              weight={900}
+              stretch="extended"
+              className="tracking-tight py-[1rem] px-[3em] text-secondary mb-10 text-center"
+            >
+              CLIQUEZ ICI POUR FAIRE VOTRE INSCRIPTION
+            </Button>
+          </div>
+
+          <div className="flex justify-center">
+            <Image
+              src="/assets/img-negativ/img-sony/photo-group-landscape-sony-5.jpg"
+              alt="Image d'inscription"
+              width={640}
+              height={480}
+            />
+          </div>
+
+          <div className="mt-10 self-start">
+            <Typography
+              variant="caption2"
+              component="div"
+              theme="gray"
+              className=""
+              weight={300}
+            >
+              {INSCRIPTION_DETAILS}
+            </Typography>
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Button
+              size="small"
+              variant="accent"
+              weight={900}
+              
+              className="tracking-tight  text-secondary mb-10 text-center"
+            >
+              QUESTION COURANTES
+            </Button>
+        
+          </div>
+
+              
+            <Typography  variant="caption2"
+              component="div"
+              theme="gray"
+              className=""
+              weight={300}>
+            Pour toutes autres questions vous pourrez trouvez des réponses sur les pages de notre menu Informations pratiques :
           </Typography>
-        </div>
-        <div className="mt-10">
-          <Button variant="accent" size="large" baseUrl="">
-            QUESTION COURANTES
-          </Button>
-        </div>
-        <div>
-          <Typography
-            variant="paragraph"
-            component="h4"
-            theme="black"
-            className="mt-[118px] flex justify-center gap-4 text-primary"
-          >
-            <a href="/" className="text-black hover:text-primary">
-              HORAIRES
-            </a>
-            <span className="">|</span>
-            <a href="/" className="text-black hover:text-primary">
-              TARIFS
-            </a>
-            <span>|</span>
-            <a href="/" className="text-black hover:text-primary">
-              CONTACTS
-            </a>
-          </Typography>
-          <Typography
-            variant="paragraph"
-            component="h4"
-            theme="black"
-            className="mt-1 flex justify-center gap-4 text-primary"
-          >
-            <a>NOUS CONTACTER</a>
-          </Typography>
-          <PreFooter highText="Découvrir aussi" lowText="COMMENT S'INSCRIRE ?"/>
+
+          <div>
+            <Typography
+              variant="paragraph-quote"
+              component="h4"
+              theme="black"
+              className="mt-[118px] flex justify-center gap-4 text-primary tracking-tight"
+              weight={800}
+              
+            >
+              <a href="/" className="text-secondary hover:text-secondary/80">
+                HORAIRES
+              </a>
+              <span>|</span>
+              <a href="/informations-pratiques/tarifs-aides" className="text-secondary hover:text-secondary/80">
+                TARIFS
+              </a>
+              <span>|</span>
+              <a href="/" className="text-secondary hover:text-secondary/80">
+                CONTACTS
+              </a>
+            </Typography>
+
+            <Typography
+              variant="paragraph-quote"
+              component="h4"
+              theme="primary"
+              className="mt-1 flex justify-center gap-4 "
+              weight={800}
+            >
+              <a href="/nous-contacter" className="hover:text-primary/80" >NOUS CONTACTER</a>
+            </Typography>
+
+            <PreFooter
+              highText="DÉCOUVRIR AUSSI"
+              lowText="COMMENT S'INSCRIRE ?"
+              href="/"
+            />
+          </div>
         </div>
       </Container>
     </>

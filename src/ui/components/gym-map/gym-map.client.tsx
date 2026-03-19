@@ -23,7 +23,7 @@ export default function GymMapClient() {
       "></div>
     `,
       className: "", // IMPORTANT sinon leaflet ajoute un style par défaut
-      iconSize: [18, 18],
+      iconSize: [15, 15],
       iconAnchor: [9, 9],
     });
   }, [mounted]);
@@ -36,7 +36,7 @@ export default function GymMapClient() {
       center={[48.8566, 2.3522]}
       zoom={12}
       scrollWheelZoom={false}
-      className="h-[500px] w-full rounded-xl"
+      className="h-[700px] w-full rounded-xl"
     >
       <TileLayer
         attribution="&copy; OpenStreetMap contributors"

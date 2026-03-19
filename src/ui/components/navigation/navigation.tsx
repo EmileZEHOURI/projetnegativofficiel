@@ -25,9 +25,9 @@ export const Navigation = ({ variant = "default", isLight = false }: Props) => {
       <Button
         size="medium-btn-header"
         variant={isLight ? "isLight" : "bpwhite"}
-        weight={700}
+        weight={800}
         stretch="extended"
-        className=""
+        className="tracking-tighter"
       >
         {link.label}
       </Button>
@@ -45,6 +45,7 @@ export const Navigation = ({ variant = "default", isLight = false }: Props) => {
         <div className="flex justify-start">
           <Button
             variant={isLight ? "circleLight" : "circle"}
+            size="medium-btn-header"
             action={() => setSidebarOpen(true)}
           >
             <TbMenu size={44}

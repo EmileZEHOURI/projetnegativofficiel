@@ -68,7 +68,7 @@ export const Button = ({
   switch (variant) {
     case "button-classic":
       variantStyles =
-        " bg-transparent border border-black text-black  whitespace-nowrap shrink-0  hover:bg-white/10 transition";
+        " bg-transparent border border-white text-white  whitespace-nowrap shrink-0  hover:border-primary/40 hover:text-white transition";
       break;
     case "bpwhite":
       variantStyles =
@@ -79,14 +79,14 @@ export const Button = ({
         " bg-transparent border border-black text-black  whitespace-nowrap shrink-0 rounded-[2rem] hover:bg-white/10 transition";
       break;
     case "accent": //Default
-      variantStyles = "bg-primary hover:bg-primary-400 text-white rounded";
+      variantStyles = "bg-transparent border hover:border-secondary-400 text-secondary  transition";
       break;
     case "secondary":
       variantStyles =
         "bg-primary-200 hover:bg-primary-300/50 text-primary rounded";
       break;
     case "black":
-      variantStyles = "bg-gray-900 hover:bg-gray-800 text-white rounded";
+      variantStyles = "bg-gray-900 hover:bg-gray-800 text-white  rounded";
       break;
     case "white":
       variantStyles = "bg-white hover:bg-gray-100 text-gray-900 rounded";
@@ -111,7 +111,7 @@ export const Button = ({
         variantStyles = " text-white ";
       }
       if (iconTheme === "black") {
-        variantStyles = " text-white leading-none";
+        variantStyles = " text-gray-200/50 hover:text-white/70 leading-none";
       }
       if (iconTheme === "white") {
         variantStyles = " text-gray-900 ";
@@ -128,7 +128,7 @@ export const Button = ({
       break;
     case "isLight":
       variantStyles =
-        "bg-transparent border border-black text-primary whitespace-nowrap shrink-0 rounded-[2rem] hover:bg-black hover:text-white transition";
+        "bg-transparent border border-black/20 text-primary whitespace-nowrap shrink-0 rounded-[2rem] hover:border-primary/80 transition";
   }
 
   switch (stretch) {
@@ -152,40 +152,41 @@ export const Button = ({
   const isIcon = variant === "ico" || variant === "circle"|| variant === "circleLight";
 
   switch (size) {
-    case "small":
-      textSize = "text-caption3";
-      padding = "px-4 py-3";
-      iconBox = "w-[40px] h-[40px]";
-      icoSize = 18;
-      break;
+  case "small":
+    textSize = "text-caption3";
+    padding = "px-4 py-3";
+    iconBox = "w-[40px] h-[40px]";
+    icoSize = 18;
+    break;
 
-    case "medium":
-      textSize = "text-caption2";
-      padding = "p-[1rem]";
-      iconBox = "w-[90px] h-[90px]";
-      icoSize = 20;
-      break;
+  case "medium":
+    textSize = "text-caption3";
+    padding = "p-[1rem]";
+    iconBox = isIcon ? "w-[40px] h-[40px]" : "w-[90px] h-[90px]";
+    icoSize = 20;
+    break;
 
-    case "medium-btn-header":
-      textSize = "text-caption2";
-      padding = "p-[1rem]";
-      iconBox = "w-[90px] h-[90px]";
-      icoSize = 20;
-      break;
+  case "medium-btn-header":
+    textSize = "text-caption3";
+    padding = "p-[1rem]";
+    iconBox = "w-[90px] h-[90px]";
+    icoSize = 20;
+    break;
 
-    case "large":
-      textSize = "text-caption1";
-      padding = "px-10 py-6";
-      iconBox = "w-[60px] h-[60px]";
-      icoSize = 30;
-      break;
+  case "large":
+    textSize = "text-caption2";
+    padding = "px-8 py-4";
+    iconBox = isIcon ? "w-[40px] h-[40px]" : "w-[60px] h-[60px]";
+    icoSize = 24;
+    break;
 
-    default:
-      textSize = "text-caption2";
-      padding = "px-4 py-3";
-      icoSize = 20;
-      break;
-  }
+  default:
+    textSize = "text-caption2";
+    padding = "px-4 py-3";
+    iconBox = isIcon ? "w-[32px] h-[32px]" : "w-[40px] h-[40px]";
+    icoSize = 20;
+    break;
+}
   
 
   const Icon: IconType | undefined = icon?.icon;

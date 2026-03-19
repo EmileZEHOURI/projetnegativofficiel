@@ -17,6 +17,7 @@ export const SocialNetworksButtons = ({ className, theme="black", icoSize="large
       variant="ico"
       iconTheme={theme}
       size={icoSize}
+      
       icon={{
         icon: socialNetwork.icon ? socialNetwork.icon : RiCrossLine,
         

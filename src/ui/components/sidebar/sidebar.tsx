@@ -1,35 +1,50 @@
+"use client";
+
 import { Logo } from "@/ui/design-system/logo/logo";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
 import { AiOutlineArrowLeft } from "react-icons/ai";
-
-console.log("Sidebar module loaded", typeof window);
+import { SocialNetworksButtons } from "../navigation/social-networks-buttons";
 
 type SidebarItem = {
   label: string;
   href: string;
+  target?: "_self" | "_blank";
 };
 
-type SidebarSection =
+type MainSection =
   | {
       title: string;
-      href: string; // section cliquable directe
+      href: string;
     }
   | {
       title: string;
-      items: SidebarItem[]; // section expandable
+      items: SidebarItem[];
     };
+
+type SecondaryLink = {
+  label: string;
+  href: string;
+  target?: "_self" | "_blank";
+};
+
 type SidebarProps = {
   open: boolean;
   onClose: () => void;
-  sections?: SidebarSection[];
+  mainSections?: MainSection[];
+  secondaryLinks?: SecondaryLink[];
 };
 
+const styles = {
+  mainLink:
+    "text-[1.25em] md:text-[1.35em] lg:text-[1.8em] font-[800] uppercase tracking-tight leading-[1.15em] text-gray-500 hover:text-gray-500/80 transition",
+  subLink:
+    "text-[0.8em] md:text-[0.9em] lg:text-[1em] font-[800] uppercase tracking-tight leading-[1.2em] text-gray-500 hover:text-gray-500/80 transition",
+  secondaryLink:
+    "text-[1.05em] md:text-[1.15em] lg:text-[1.5em] font-[700] uppercase tracking-tight leading-[1.15em] text-primary-300 hover:text-gray-300/80 transition",
+};
 
-
-
-const DEFAULT_SECTIONS: SidebarSection[] = [
+const DEFAULT_MAIN_SECTIONS: MainSection[] = [
   {
     title: "Inscription",
     href: "/informations-pratiques/inscription",
@@ -39,7 +54,7 @@ const DEFAULT_SECTIONS: SidebarSection[] = [
     href: "/presentation-club",
   },
   {
-    title: "Les Equipes",
+    title: "Les Équipes",
     items: [
       { label: "Seniors 1", href: "/seniors-1" },
       { label: "U21 1", href: "/u21-1" },
@@ -49,17 +64,20 @@ const DEFAULT_SECTIONS: SidebarSection[] = [
   },
   {
     title: "Les Projets",
-    href: "/",
+    items: [
+      { label: "Projet 1", href: "/" },
+      { label: "Projet 2", href: "/" },
+    ],
   },
   {
     title: "Informations Pratiques",
     items: [
       { label: "L'Inscription", href: "/informations-pratiques/inscription" },
       { label: "Les Gymnases", href: "/informations-pratiques/gymnases" },
-      { label: "Taris & Aides", href: "/informations-pratiques/tarifs-aides" },
+      { label: "Tarifs & Aides", href: "/informations-pratiques/tarifs-aides" },
       { label: "Les Permanences", href: "/informations-pratiques/permanences" },
       { label: "Les Horaires", href: "/informations-pratiques/horaires" },
-      { label: "Dates De Reprises", href: "/informations-pratiques/dates-reprises" },
+      { label: "Dates de Reprise", href: "/informations-pratiques/dates-reprises" },
     ],
   },
   {
@@ -70,60 +88,75 @@ const DEFAULT_SECTIONS: SidebarSection[] = [
     title: "Nous Contacter",
     href: "/",
   },
+];
 
+const DEFAULT_SECONDARY_LINKS: SecondaryLink[] = [
   {
-    title: "Boutique",
-    href: "/",
+    label: "🔍 Rechercher sur le site",
+    href: "/recherche",
+    target: "_self",
   },
   {
-    title: "Devenir Partenaire",
-    href: "/",
+    label: "La boutique",
+    href: "https://basketparis14.bigcartel.com/",
+    target: "_blank",
   },
   {
-    title: "Mentions Légales",
+    label: "Devenir partenaire",
     href: "/",
+    target: "_self",
+  },
+  {
+    label: "Mentions légales",
+    href: "/",
+    target: "_self",
   },
 ];
 
 export function Sidebar({
   open,
   onClose,
-  sections = DEFAULT_SECTIONS,
+  mainSections = DEFAULT_MAIN_SECTIONS,
+  secondaryLinks = DEFAULT_SECONDARY_LINKS,
 }: SidebarProps) {
-  // Fermer avec ESC
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    if (open) window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open, onClose]);
-
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggle = (idx: number) => {
-  setOpenIndex((current) => (current === idx ? null : idx));
-};
+  useEffect(() => {
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Escape") onClose();
+  };
 
+  if (open) {
+    window.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+  }
+
+  return () => {
+    window.removeEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "";
+  };
+}, [open]);
+
+  const toggle = (idx: number) => {
+    setOpenIndex((current) => (current === idx ? null : idx));
+  };
 
   return (
     <>
-      {/* Overlay */}
       <div
         className={[
-          "fixed inset-0 z-40 bg-black/50 transition-opacity duration-500 ease-in-out overscroll-auto",
+          "fixed inset-0 z-50 bg-black/50 transition-opacity duration-300",
           open
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none",
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0",
         ].join(" ")}
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Drawer */}
       <aside
         className={[
-          "fixed left-0 top-0 z-50 h-dvh w-[760px] max-w-[50vw] bg-primary shadow-xl overflow-y-auto sidebar-scroll",
+          "fixed left-0 top-0 z-50 flex h-dvh w-[85vw] max-w-[760px] flex-col overflow-y-auto sidebar-scroll bg-primary shadow-xl",
           "transition-transform duration-500 ease-out",
           open ? "translate-x-0" : "-translate-x-full",
         ].join(" ")}
@@ -131,88 +164,97 @@ export function Sidebar({
         aria-modal="true"
         aria-label="Menu"
       >
-        <div className="flex items-center justify-between  px-5 py-4 m-6">
-          <button onClick={onClose} className="" aria-label="Fermer le menu">
+        <div className="m-6 flex items-center justify-between px-5 py-6">
+          <button onClick={onClose} aria-label="Fermer le menu">
             <AiOutlineArrowLeft size={38} color="white" />
           </button>
-          <div className="">
-            <Logo variant="secondary" />
-          </div>
+          <a href="/">
+             <Logo variant="secondary" />
+          </a>
+         
         </div>
 
-        <nav className="px-5 py-4 m-6">
-          <div className="flex flex-col gap-1">
-            {sections.map((section, idx) => (
-              <div key={idx} className="flex flex-col gap-0">
+        <main className="flex flex-1 flex-col px-5">
+          <section className="mb-8">
+            <nav className="mx-6" aria-label="Navigation principale">
+              <ul className="list-none space-y-3 pl-0">
+                {mainSections.map((section, idx) => (
+                  <li key={idx} className="list-none">
+                    {"items" in section ? (
+                      <div className="flex flex-col">
+                        <button
+                          type="button"
+                          onClick={() => toggle(idx)}
+                          aria-expanded={openIndex === idx}
+                          className="flex w-full items-center justify-between text-left"
+                        >
+                          <span className={styles.mainLink}>{section.title}</span>
+                        
+                        </button>
 
-                {/* It's this as an Items or Not (different action) */}
-                
-                {"items" in section ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => toggle(idx)}
-                      className="flex w-full items-center justify-between rounded-md px-3  hover:bg-gray-100"
-                      aria-expanded={openIndex === idx}
-                    >
-                      <span className="text-xs font-semibold uppercase tracking-wide text-gray-500 whitespace-nowrap shrink-0 ">
-                        {section.title}
-                      </span>
-
-                      <span
-                        className={
-                          openIndex === idx
-                            ? "rotate-180 transition"
-                            : "transition"
-                        }
+                        <ul
+                          className={[
+                            "list-none overflow-hidden pl-0 transition-all duration-300 ease-in-out",
+                            openIndex === idx
+                              ? "mt-2 max-h-96 opacity-100"
+                              : "max-h-0 opacity-80",
+                          ].join(" ")}
+                        >
+                          {section.items.map((item) => (
+                            <li key={item.href} className="list-none py-1">
+                              <Link
+                                href={item.href}
+                                onClick={onClose}
+                                target={item.target ?? "_self"}
+                                className={styles.subLink}
+                              >
+                                {item.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <Link
+                        href={section.href}
+                        onClick={onClose}
+                        className="block"
                       >
-                        ▾
-                      </span>
-                    </button>
+                        <span className={styles.mainLink}>{section.title}</span>
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </section>
 
-                    <div
-                      className={[
-                        "overflow-hidden transition-all duration-300 ease-in-out",
-                        openIndex === idx
-                          ? "max-h-96 opacity-100"
-                          : "max-h-0 opacity-0",
-                      ].join(" ")}
+          <section className="mt-auto mb-5">
+            <nav className="mx-6" aria-label="Navigation secondaire">
+              <ul className="list-none space-y-3 pl-0">
+                {secondaryLinks.map((link) => (
+                  <li key={link.href} className="list-none">
+                    <Link
+                      href={link.href}
+                      onClick={onClose}
+                      target={link.target ?? "_self"}
+                      className={styles.secondaryLink}
                     >
-                      <ul className="flex flex-col pb-2">
-                        {section.items.map((item) => (
-                          <li key={item.href}>
-                            <Link
-                              href={item.href}
-                              onClick={onClose}
-                              className="block rounded-md px-6  text-sm hover:bg-gray-100"
-                            >
-                              {item.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </>
-                ) : (
-                  <Link
-                    href={section.href}
-                    onClick={onClose}
-                    className="block rounded-md px-3 py-2 text-sm hover:bg-gray-100"
-                  >
-                    <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
-                      {section.title}
-                    </span>
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-        </nav>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </section>
 
-        {/* Zone “libre” éditable */}
-        <div className="mt-auto  px-5 py-4 text-xs text-gray-500">
-          © {new Date().getFullYear()} — Ton projet
-        </div>
+           <section className="mt-auto mb-5">
+            <nav className="mx-6" aria-label="footer">
+              <SocialNetworksButtons theme="black" className="flex items-center gap-1 hover:text-white/80" icoSize="small" /> 
+            </nav>
+          </section>
+         
+        </main>
       </aside>
     </>
   );

@@ -1,29 +1,23 @@
 import clsx from "clsx";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useMemo } from "react";
+import { usePathname } from "next/navigation";
 
-interface Props{
-    href : string;
-    children : React.ReactNode;
+interface Props {
+  href: string;
+  children: React.ReactNode;
 }
 
-export const ActiveLink = ({href, children}: Props) => {
+export const ActiveLink = ({ href, children }: Props) => {
+  const pathname = usePathname();
 
-    const router = useRouter()
+  const isActive = pathname === href;
 
-
-    console.log('router :: ', router.pathname);
-
-    const isActive : boolean = useMemo(() => {    
-        return router.pathname === href
-
-    }, [router.pathname, href])
-
-
-    return(
-        <Link href={href} className={clsx(isActive && "text-primary font-medium")}>
-            {children}
-        </Link>
-    ) 
-}
+  return (
+    <Link
+      href={href}
+      className={clsx(isActive && "text-primary font-medium")}
+    >
+      {children}
+    </Link>
+  );
+};

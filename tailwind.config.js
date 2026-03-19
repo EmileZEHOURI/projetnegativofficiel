@@ -21,9 +21,9 @@ module.exports = {
       paragraph: ["1em", { lineHeight: 1.5 }],
       "paragraph-quote": ["1.75em", { lineHeight: 1.2 }],
 
-      caption3: ["0.6em", { lineHeight: 1.1 }],
-      caption2: ["0.8em", { lineHeight: 1.1 }],
-      caption1: ["1em", { lineHeight: 1.1 }],
+      caption3: ["0.8em", { lineHeight: 1.5 }],
+      caption2: ["1em", { lineHeight: 1.5 }],
+      caption1: ["1.2em", { lineHeight: 1.5 }],
       
     },
 

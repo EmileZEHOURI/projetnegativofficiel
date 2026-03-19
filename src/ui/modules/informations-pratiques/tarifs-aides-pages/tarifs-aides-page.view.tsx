@@ -5,26 +5,40 @@ import { PreFooter } from "@/ui/components/prefooter/prefooter";
 import { Typography } from "@/ui/design-system/typography/typography";
 import { Button } from "@/ui/design-system/button/button";
 import ImageSlideWrapper from "@/ui/components/image-slide-wrapper/image-slide-wrapper";
+import {
+  AIDES_TEXT,
+  COMPETITION_NEGATIV_TEXT,
+  COTISATION_USAGE_TEXT1,
+  COTISATION_USAGE_TEXT2,
+  COUPONS_SPORT_TEXT,
+  FAMILLES_NOMBREUSES_TEXT,
+  FONDS_SOLIDARITE_TEXT,
+  INTRO_TEXT,
+  LICENCE_PARENTS_TEXT,
+  LOISIRS_TEXT,
+  OFFRE_DONATEURS_TEXT1,
+  OFFRE_DONATEURS_TEXT2,
+  PASS_SPORT_TEXT,
+  PRACTICES_TEXT,
+  TICKETS_LOISIRS_TEXT,
+} from "./component/tarifs-aides-data";
 
-const titleAndParagraph = (title?: string, paragraph?: React.ReactNode) => {
+export const titleAndParagraph = (title?: string, paragraph?: React.ReactNode) => {
   return (
-    <div>
+    <div className=" ">
       <Typography
-        variant="h2-page-title"
+        variant="caption1"
         component="h5"
         theme="primary"
-        className="mt-10 justify-center items-center text-center tracking-[0.1em]"
+        className=" mt-10 text-left tracking-tighter "
+        stretch="extended"
+        weight={800}
       >
         {title}
       </Typography>
 
-      <Typography
-        variant="h2-page-title"
-        component="span"
-        theme="gray"
-        className="mt-10 justify-center items-center text-center"
-      >
-        <p className="mt-8">{paragraph}</p>
+      <Typography variant="caption2" component="div" theme="gray" className="">
+        {paragraph}
       </Typography>
     </div>
   );
@@ -38,303 +52,180 @@ const images = [
   { src: "/assets/img-negativ/img/photo-group-1.jpg", alt: "Image 5" },
 ];
 
+const SECTIONS = [
+  { title: "CATÉGORIES LOISIRS", content: LOISIRS_TEXT },
+  { title: "COMPÉTITION NEGATIV", content: COMPETITION_NEGATIV_TEXT },
+];
+
+const AIDES_SECTIONS = [
+  { title: "LES AIDES", content: AIDES_TEXT },
+  { title: "FAMILLES NOMBREUSES :", content: FAMILLES_NOMBREUSES_TEXT },
+  { title: "TICKETS LOISIRS", content: TICKETS_LOISIRS_TEXT },
+  { title: "PASS SPORT", content: PASS_SPORT_TEXT },
+  { title: "COUPONS SPORT", content: COUPONS_SPORT_TEXT },
+];
+
 export const TarifsAidesPageView = () => {
   return (
     <>
       <Container className="flex flex-col h-full pl-[106px] pr-[106px] items-center ">
         <div>
-          <PostHeader
-            highText="INFORMATIONS PRATIQUE"
-            lowText="TARIFS & AIDES"
+          <PostHeader title="TARIFS & AIDES" />
+        </div>
+        <div className="max-w-3xl px-6">
+          <Typography
+            variant="caption2"
+            component="div"
+            theme="gray"
+            className="text-left"
+          >
+            {INTRO_TEXT}
+          </Typography>
+        </div>
+
+        <div className="relative w-screen h-[550px] mt-10 overflow-hidden rounded-lg left-10">
+          <Image
+            src="/assets/img-negativ/img-alain/photo-mass-jazz-1.jpeg"
+            alt="Titre"
+            fill
+            className="object-cover object-[center_25%]"
           />
         </div>
 
-        <Typography
-          variant="h2-page-title"
-          component="span"
-          theme="gray"
-          className="mt-10 justify-center items-center text-center"
-        >
-          <p>
-            Retrouvez ci-dessous les tarifs de{" "}
-            <strong>
-              nos cotisations pour la{" "}
-              <span className="text-primary">saison 2025-26 </span> ainsi que
-              l’ensemble des aides dont vous pouvez bénéficier.
-            </strong>
-            Pour rappel, nous sommes une association et nous ne percevons
-            aujourd’hui que peu de subventions publiques pour fonctionner.
-            <strong>
-              <span className="text-secondary">
-                Vos cotisations nous permettent de fonctionner, d’exister !
-              </span>
-            </strong>
-          </p>
-          <p>
-            <br />
-            Vous pouvez faire baisser votre cotisation et aider un peu plus
-            notre association
-            <strong>
-              <span className="text-secondary">en réalisant un don</span>
-            </strong>
-            qui vous sera défiscaliser. Retrouvez plus bas sur cette page tous
-            les détails. Enfin, si votre entreprise ou celle d’un proche peut
-            sponsoriser le club, n’hésitez pas à nous contacter. Cela pourrait
-            permettre au club de ne pas avoir à augmenter le montant des
-            cotisations dans les année à venir.
-          </p>
-        </Typography>
+        <div className="mt-[150px] px-6 w-full max-w-4xl mx-auto grid grid-cols-12 gap-20 items-start">
+          <div className="col-start-1 col-span-5 ">
+            <Typography
+              variant="caption2"
+              component="div"
+              theme="gray"
+              className="mt-10 text-left"
+            >
+              {PRACTICES_TEXT}
+            </Typography>
 
-        <Image
-          src="/assets/img-negativ/img/photo-group-1.jpg"
-          alt="Titre"
-          width={1920}
-          height={1080}
-          className="mt-10"
-        />
+            {SECTIONS.map((section) =>
+              titleAndParagraph(section.title, section.content),
+            )}
+          </div>
 
-        <Typography
-          variant="h2-page-title"
-          component="span"
-          theme="gray"
-          className="mt-10 justify-center items-center text-center"
-        >
-          <p>
-            Nous proposons deux pratique différentes. La{" "}
-            <strong>
-              <span className="text-primary">pratique en Loisirs,</span>
-            </strong>
-            qui compte un entrainement par semaine, et la pratique en
-            Compétitions qui comptent elle deux entrainements par semaine et des
-            matchs lors des week-ends. Pour s’inscrire dans une équipe
-            Compétitions il faut avoir été sélectionné lors d’une détection.
-          </p>
-        </Typography>
+          <div className="col-start-7 col-span-5 relative h-[400px] md:mt-0">
+            <Image
+              src="/assets/img-negativ/img-alain/mass-photo-1.jpeg"
+              alt="Titre"
+              width={280}
+              height={360}
+              className="absolute top-0 left-0 z-10"
+            />
 
-        {titleAndParagraph(
-          "Catégories Loisirs",
-          <>
-            <p>La cotisation annuelle est de 265 €</p>
-            <p>
-              <br />
-              Pour les nouveaux adhérents, des frais d’adhésion de 79 € sont à
-              régler (à partir de la catégorie U11){" "}
-            </p>
-          </>,
-        )}
-        {titleAndParagraph(
-          "Compétition BP14",
-          <>
-            <p>La cotisation annuelle est de 310 €</p>
-            <p>
-              <br />
-              PPour les nouveaux adhérents, des frais d’adhésion de 79 € sont à
-              régler (à partir de la catégorie U11){" "}
-            </p>
-          </>,
-        )}
-        {titleAndParagraph(
-          "Compétition (CTC)",
-          <>
-            <p>
-              Pour les équipes Filles appartenant à la CTC Paris Rive Gauche
-              (entente avec le club Paris Basket 15)
-            </p>
-            <p>
-              <br />
-              La cotisation annuelle est de 275 €
-            </p>
-            <p>
-              <br />
-              Pour les nouveaux adhérents, des frais d’adhésion de 75 € sont à
-              régler (à partir de la catégorie U11)
-            </p>
-          </>,
-        )}
-
-        <Image
-          src="/assets/img-negativ/img/photo-group-2.jpg"
-          alt="Titre"
-          width={1920}
-          height={1080}
-          className="mt-10"
-        />
-
-        {titleAndParagraph(
-          "Licence Parents",
-          <>
-            <p>
-              Nous mettons en place cette saison une licence parents, pour
-              seulement 30 € annuel. Cette licence vous permettra de vous
-              investir plus amplement dans la vie de notre club et notamment de
-              pouvoir :
-            </p>
-            <ul className="list-disc pl-6 space-y-10 mt-5">
-              <li>participer activement aux séances de l’Ecole de Basket</li>
-              <li>
-                être Responsable de Salle lors des matchs compétitions de vos
-                enfants (d’une grande aide pour l’organisation du club)
-              </li>
-              <li>
-                tenir des tables de match et bénéficier des formations e-marque
-                réalisées par le club.
-              </li>
-            </ul>
-            <p>
-              <br /> Cette licence est aussi de façon à soutenir le club
-            </p>
-          </>,
-        )}
-
-        <Image
-          src="/assets/img-negativ/img/photo-mosaic-3.png"
-          alt="Titre"
-          width={1920}
-          height={1080}
-          className="mt-10"
-        />
-
-        {titleAndParagraph(
-          "Les Aides",
-          <>
-            <p>
-              Il existe plusieurs type d’aides comme le Pass’ Loisirs Activités
-              et le Coupon Sport qui sont fourni par votre CAF. Le club met lui
-              en place des facilités pour les familles nombreuses ainsi qu’un
-              Fonds de Solidarité pour les personnes en plus grande difficultés.
-              En cas de difficultés supplémentaires ou cas particuliers,
-              n’hésitez pas à rentrer directement en contact avec nous.
-            </p>
-          </>,
-        )}
-
-        {titleAndParagraph(
-          "Familles Nombreuses :",
-          <>
-            <p>
-              Conscient de la difficultés des familles nombreuses à pouvoir
-              assumer plusieurs cotisations, nous avons mis en place des
-              réductions pour elles. Nous avons donc mis en places les
-              réductions suivantes :
-            </p>
-            <ul className="pl-6 space-y-10 mt-5">
-              <li>
-                2e enfant : frais d’adhésion de 79€ offerts (pour les nouveaux
-                adhérents) et -30€ sur la seconde cotisation.
-              </li>
-              <li>
-                3e enfant : frais d’adhésion de 79€ offerts et -50€ sur la 3e
-                cotisation
-              </li>
-              <li>
-                4e enfant : frais d’adhésion de 79€ offerts et -70€ sur la 4e
-                cotisation.
-              </li>
-              <li>
-                5e enfant : frais d’adhésion de 79€ offerts et -90€ sur la 5e
-                cotisation.
-              </li>
-            </ul>
-          </>,
-        )}
-
-        {titleAndParagraph(
-          "TiCKETS LOISIRS",
-          <>
-            <p>
-              Bénéficiez d’une aide de 220 € maximum par enfant selon la
-              situation. Toutes les informations sont sur cette page du site
-              www.caf.fr
-            </p>
-          </>,
-        )}
-        {titleAndParagraph(
-          "Pass Sport",
-          <>
-            <p>
-              Bénéficiez de 70 € si vous avez entre 14 et 30 ans. Toutes les
-              informations sont sur cette page du site www.pass.sports.gouv.fr
-            </p>
-          </>,
-        )}
-        {titleAndParagraph(
-          "Coupons Sport",
-          <>
-            <p>
-              Bénéficiez de chèques de 10 €, 15 € ou 20 € de réduction. Toutes
-              les informations sont sur cette page du site www.aide-sociale.fr
-            </p>
-          </>,
-        )}
-
-        <Image
-          src="/assets/img-negativ/img/photo-mosaic-1.jpg"
-          alt="Titre"
-          width={1920}
-          height={1080}
-          className="mt-10"
-        />
-
-        <div className="mt-10">
-          {titleAndParagraph(
-            "OFFRE DONATEURS",
-            <>
-              <p>
-                Bénéficiez de chèques de 10 €, 15 € ou 20 € de réduction. Toutes
-                les informations sont sur cette page du site www.aide-sociale.fr
-              </p>
-            </>,
-          )}
-          <Button variant="accent" size="large" baseUrl="">
-            EXPLICATIF OFFRE DONATEURS
-          </Button>
+            <Image
+              src="/assets/img-negativ/img-sony/photo-melvin-1.jpg"
+              alt="Titre"
+              width={240}
+              height={320}
+              className="absolute top-20 left-40 z-20"
+            />
+          </div>
         </div>
 
-        {titleAndParagraph(
-          "Fonds de Solidarité",
-          <>
-            <p>
-              Afin de venir en aide aux personnes les plus en difficultés, nous
-              avons mis en place un fonds de solidarité. Cette cagnotte est
-              utilisée pour offrir ou réduire les cotisations des personnes dont
-              le règlement de la cotisation est compliqué.
-            </p>
-            <p>
-              <br />
-              Ce don est déductible de vos impôts (pour toute demande d’un Cerfa
-              à ce sujet contactez nous).
-            </p>
-            <Button variant="accent" size="large" baseUrl="">
-              Faites un Don ici
-            </Button>
-          </>,
-        )}
+        <div className="mt-[80px] max-w-3xl px-6">
+          {titleAndParagraph("LICENCE PARENTS", LICENCE_PARENTS_TEXT)}
+        </div>
 
-       <ImageSlideWrapper images={images}/>
+        <div className="relative w-[640px] h-[480px] mt-10">
+          {/* Image fond */}
+          <Image
+            src="/assets/img-negativ/img-sony/photo-group-landscape-sony-6.jpg"
+            alt="Titre"
+            width={400}
+            height={300}
+            className="absolute top-0 right-0 object-cover rounded-lg shadow-lg"
+          />
 
-        {titleAndParagraph(
-          "Comment est utilisée votre cotisation ?",
-          <>
-            <p>
-              Notre club est avant tout une association, financée en très grande
-              majorité par vos cotisations. La stabilité de notre structure
-              (comme la majorité des associations) est très fragile. L’équilibre
-              financier est recherché chaque saison et cela relève parfois de
-              l’exploit, notamment grâce à l’énergie déployée par nos dirigeants
-              bénévoles sur les sujets comptables. Notre association bénéficie
-              de quelques subventions publiques, mais encore trop peu pour
-              permettre de baisser les cotisations. Retrouvez dans le document
-              ci-dessous une explication détaillée du financement de notre
-              association et un graphique schématisant l’utilisation qui est
-              faite de votre cotisation.
-            </p>
-            <Button variant="accent" size="large" baseUrl="">
-              Comment est utilisé votre cotisation ?
-            </Button>
-          </>,
-        )}
+          {/* Image devant */}
+          <Image
+            src="/assets/img-negativ/img-sony/photo-group-with-alain.jpg"
+            alt="Titre"
+            width={320}
+            height={240}
+            className="absolute top-20 left-10 object-cover "
+          />
+        </div>
 
-        <PreFooter highText="Découvrir aussi" lowText="LES PERMANENCES" />
+        <div className="max-w-3xl w-full mt-[80px] ">
+          {AIDES_SECTIONS.map((section) =>
+            titleAndParagraph(section.title, section.content),
+          )}
+        </div>
+
+        <div className="relative w-[1000px] h-[450px]  overflow-hidden mt-[50px]  ">
+          <Image
+            src="/assets/img-negativ/img-alain/group-bench-photo-1.jpeg"
+            alt="Titre"
+            fill
+            className="object-cover object-center"
+          />
+        </div>
+
+        <div className="max-w-3xl w-full ">
+          <div className="grid grid-cols-12 items-start mt-10">
+            {/* Texte */}
+            <div className="col-start-1 col-span-5">
+              {titleAndParagraph("OFFRE DONATEURS", OFFRE_DONATEURS_TEXT1)}
+            </div>
+
+            {/* Bouton */}
+            <div className="col-start-9 col-span-5 flex flex-col items-start">
+              {titleAndParagraph("", OFFRE_DONATEURS_TEXT2)}
+              <Button
+                variant="accent"
+                size="medium"
+                baseUrl=""
+                className="mt-[40px] tracking-tight font-normal"
+                weight={800}
+              >
+                EXPLICATIF OFFRE DONATEURS
+              </Button>
+            </div>
+          </div>
+
+          {titleAndParagraph("FONDS DE SOLIDARITÉ", FONDS_SOLIDARITE_TEXT)}
+        </div>
+
+        <div className="relative w-screen h-[550px] right-10 overflow-hidden mt-[50px]  ">
+          <Image
+            src="/assets/img-negativ/img-alain/group-bench-photo-2.jpeg"
+            alt="Titre"
+            fill
+            className=" object-cover object-[center_40%]"
+          />
+        </div>
+
+        <div className="max-w-4xl w-full">
+          <div className="grid grid-cols-12 gap-x-10 items-start mt-10">
+            <div className="col-start-1 col-span-6">
+              {titleAndParagraph(
+                "COMMENT EST UTILISÉE VOTRE COTISATION ?",
+                COTISATION_USAGE_TEXT1,
+              )}
+            </div>
+
+            <div className="col-start-8 col-span-5 justify-self-start w-full max-w-[400px]">
+              {titleAndParagraph("", COTISATION_USAGE_TEXT2)}
+
+              <Button
+                variant="accent"
+                size="medium"
+                baseUrl=""
+                className="mt-5 text-base w-full font-bold tracking-tighter font-extended"
+                weight={800}
+              >
+                COMMENT EST UTILISÉE VOTRE COTISATION ?
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <PreFooter lowText="LES PERMANENCES" href="/informations-pratiques/permanences" />
       </Container>
     </>
   );

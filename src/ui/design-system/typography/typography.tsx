@@ -12,7 +12,10 @@ interface Props {
     | "projet-surtitle"
     | "projet-footer"
     | "paragraph"
-    | "paragraph-quote";
+    | "paragraph-quote"
+    | "caption3"
+    | "caption2"
+    | "caption1";
 
   component?: "h1" | "h2" | "h3" | "h4" | "h5" | "div" | "span" | "li" | "p";
   theme?: "black" | "gray" | "white" | "primary" | "secondary";
@@ -54,7 +57,7 @@ export const Typography = ({
       break;
     case "h3-page-title":
       variantStyles = "text-h3-page-title";
-      fontStyles = "uppercase tracking-wide";
+      fontStyles = "uppercase";
       break;
     case "header-btn":
       variantStyles = "text-header-btn";
@@ -70,23 +73,31 @@ export const Typography = ({
       break;
     case "projet-title":
       variantStyles = "text-projet-title";
-      fontStyles = "uppercase tracking-wide";
+      fontStyles = "uppercase";
       break;
     case "projet-surtitle":
       variantStyles = "text-projet-surtitle";
-      fontStyles = "uppercase tracking-wide";
+      fontStyles = "uppercase";
       break;
     case "projet-footer":
       variantStyles = "text-projet-footer";
-      fontStyles = "uppercase tracking-wide";
+      fontStyles = "uppercase ";
       break;
     case "paragraph":
       variantStyles = "text-paragraph";
-      fontStyles = "tracking-wide";
       break;
     case "paragraph-quote":
       variantStyles = "text-paragraph-quote";
-      fontStyles = "uppercase tracking-wide";
+      fontStyles = "uppercase";
+      break;
+    case "caption1":
+      variantStyles = "text-caption1";
+      break;
+    case "caption2":
+      variantStyles = "text-caption2";
+      break;
+    case "caption3":
+      variantStyles = "text-caption3";
       break;
   }
 
@@ -95,7 +106,7 @@ export const Typography = ({
       colorStyles = "text-gray-900";
       break;
     case "gray":
-      colorStyles = "text-gray-700";
+      colorStyles = "text-gray-800/80";
       break;
     case "white":
       colorStyles = "text-white";
@@ -130,14 +141,14 @@ export const Typography = ({
     <Component
       className={clsx(
         "font-anybody",
-        transform, // 👈 IMPORTANT
+        transform,
         variantStyles,
         colorStyles,
         fontStyles,
-        stretchStyles, // 👈 IMPORTANT
+        stretchStyles,
         className,
       )}
-      style={{ fontWeight: weight }} // ✅ ICI
+      style={{ fontWeight: weight }}
     >
       {children}
     </Component>

@@ -79,13 +79,13 @@ export const Footer = () => {
         <div className="flex flex-col justify-center items-center gap-3 flex-wrap text-center">
           <ul className="flex items-center ">
             <li className="">
-              <Typography variant="caption4" theme="gray">
+              <Typography variant="caption1" theme="gray">
                 Mentions Légales
               </Typography>
             </li>
           </ul>
           <div className="">
-            <Typography variant="caption4" theme="gray">
+            <Typography variant="caption1" theme="gray">
               {`© Copyright ${currentYear} - `}
               <a
                 href="/"

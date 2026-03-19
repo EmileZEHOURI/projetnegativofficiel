@@ -1,11 +1,10 @@
-import { SocialNetworkView } from "./components/social-network/social-network.view";
-import { LandingPageView } from "./landing-page.view";
+import type { InstagramPost } from '@/lib/instagram'
+import { LandingPageView } from './landing-page.view'
 
-export const LandingPageContainer = () => {
-  return (
-    <>
+type Props = {
+  posts: InstagramPost[]
+}
 
-      <LandingPageView />
-    </>
-  );
-};
+export function LandingPageContainer({ posts }: Props) {
+  return <LandingPageView posts={posts} />
+}

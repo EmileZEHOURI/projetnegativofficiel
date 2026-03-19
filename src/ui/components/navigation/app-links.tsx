@@ -23,16 +23,7 @@ const footerLeClubList: AppLinks[] = [
   },
 ];
 const footerLesEquipes: AppLinks[] = [
-  {
-    label: "Séniors 1",
-    baseUrl: "/",
-    type: LinkTypes.INTERNAL,
-  },
-  {
-    label: "U21 1",
-    baseUrl: "/",
-    type: LinkTypes.INTERNAL,
-  },
+
   {
     label: "Les Equipes Compétitions",
     baseUrl: "/",

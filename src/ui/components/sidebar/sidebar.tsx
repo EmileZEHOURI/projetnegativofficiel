@@ -56,8 +56,6 @@ const DEFAULT_MAIN_SECTIONS: MainSection[] = [
   {
     title: "Les Équipes",
     items: [
-      { label: "Seniors 1", href: "/seniors-1" },
-      { label: "U21 1", href: "/u21-1" },
       { label: "Les Equipes Competitions", href: "/les-equipes-competitions" },
       { label: "Les Equipes Loisirs", href: "/les-equipes-loisirs" },
     ],

@@ -1,13 +1,10 @@
+import type { InstagramPost } from '@/lib/instagram'
+import InstagramCarousel from '@/ui/components/instagram-carousel/InstagramCarousel'
 
+type Props = {
+  posts: InstagramPost[]
+}
 
-export const SocialNetworkView = () => {
-    return(
-        <>
-           <div className="bg-primary ">
-                Réseaux Sociaux (API)
-           </div>
-
-        
-        </>
-    )
+export default function SocialNetworkView({ posts }: Props) {
+  return <InstagramCarousel posts={posts} />
 }

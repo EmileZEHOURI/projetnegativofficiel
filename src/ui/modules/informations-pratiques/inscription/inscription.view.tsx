@@ -131,7 +131,7 @@ export const InscriptionPageView = () => {
               weight={800}
               
             >
-              <a href="/" className="text-secondary hover:text-secondary/80">
+              <a href="/informations-pratiques/horaires" className="text-secondary hover:text-secondary/80">
                 HORAIRES
               </a>
               <span>|</span>

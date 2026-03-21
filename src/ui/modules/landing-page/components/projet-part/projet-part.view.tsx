@@ -11,7 +11,7 @@ const projectCards = [
     title: "JOUEUR FORMÉ",
     subtitle: "PROJET",
     cta: "EN SAVOIR PLUS",
-    href: "/",
+    href: "/projets-2",
     offsetClass: "md:mt-0",
   },
   {
@@ -19,7 +19,7 @@ const projectCards = [
     title: "NOUVELLE CATÉGORIE",
     subtitle: "PROJET",
     cta: "EN SAVOIR PLUS",
-    href: "/",
+    href: "/projets-1",
     offsetClass: "md:mt-16",
   },
 ];

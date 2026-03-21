@@ -7,7 +7,6 @@ export const AgendaPageView = () => {
   return (
     <>
       <HighPhotoView
-        position="left"
         title="Agenda"
         surtitle= " INFORMATIONS PRATIQUES "
         imageSrc="/assets/img-negativ/img/photo-agenda.jpg"

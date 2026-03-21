@@ -1,11 +1,15 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "out",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "/api/results",
         "function": "getLatestResults"
+      },
+      {
+        "source": "/api/contact",
+        "function": "submitContactForm"
       }
     ]
   }

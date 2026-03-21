@@ -51,12 +51,11 @@ export const HomeHeroView = ({ slides }: Props) => {
                 exit={{ opacity: 0, y: -24 }}
                 transition={{ duration: 0.7, ease: "easeInOut" }}
               >
-
                 <Typography
                   variant="h2-page-title"
                   component="h1"
                   theme="white"
-                  className="mt-[10px] tracking-tight shrink-0 whitespace-nowrap"
+                  className="mt-[10px] shrink-0 whitespace-nowrap tracking-tight"
                   weight={800}
                 >
                   {currentSlide.title}
@@ -86,7 +85,7 @@ export const HomeHeroView = ({ slides }: Props) => {
                     aria-label={`Aller au slide ${index + 1}`}
                     onClick={() => setActiveIndex(index)}
                     className={[
-                      "h-3 w-3 rounded-full  transition",
+                      "h-3 w-3 rounded-full transition",
                       isActive
                         ? "bg-primary"
                         : "border-white/80 bg-white/50 hover:bg-white/70",
@@ -97,13 +96,54 @@ export const HomeHeroView = ({ slides }: Props) => {
             </div>
           </div>
         </Container>
-        <div className="pointer-events-auto absolute right-2 top-1/2 -translate-y-1/2 z-20">
+
+        <div className="pointer-events-auto absolute right-2 top-1/2 z-20 -translate-y-1/2">
           <SocialNetworksButtons
             theme="black"
             icoSize="medium"
             className="flex flex-col gap-0.5"
           />
         </div>
+
+        {/* Flèche vers la section suivante */}
+        <motion.a
+          href="#follow-social-network"
+          aria-label="Aller à la section suivante"
+          className="pointer-events-auto absolute right-[15px] top-2/2 z-20 flex -translate-y-[140px] items-end justify-end text-white/90 duration-300 transition animate"
+          initial={false}
+          whileHover="hover"
+        >
+          <motion.svg
+            width="16"
+            height="120"
+            viewBox="0 0 16 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="overflow-visible"
+          >
+            <motion.path
+              d="M8 1V92"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeLinecap="round"
+              variants={{
+                hover: { d: "M8 1V104" },
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            />
+            <motion.path
+              d="M3 87L8 92L13 87"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              variants={{
+                hover: { d: "M3 99L8 104L13 99" },
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            />
+          </motion.svg>
+        </motion.a>
       </div>
     </section>
   );

@@ -6,9 +6,17 @@ export interface AppLinks{
     baseUrl: string;
     type: LinkType; // @Todo refactor this
     icon?: IconType;
+    target?: "_self" | "_blank";
+    
 }
 
 export interface FooterLinks{
     label: string;
     links: AppLinks[];
 }
+
+export type FooterSimpleLink = {
+  label: string;
+  href: string;
+  target?: "_self" | "_blank";
+};

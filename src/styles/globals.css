@@ -49,3 +49,7 @@ a:hover {
   font-variation-settings: "wdth" 150;
    font-stretch: 150%;
 }
+
+html {
+  scroll-behavior: smooth;
+}

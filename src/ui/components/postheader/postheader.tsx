@@ -34,7 +34,7 @@ export const PostHeader = ({ title }: Props) => {
           variant="h2-page-title"
           component="h1"
           theme="primary"
-          className="mt-[10px] text-shadow-lg tracking-tight"
+          className="mt-[10px] text-shadow-lg tracking-[-0.08em]"
           stretch="extended"
           weight={800}
         >

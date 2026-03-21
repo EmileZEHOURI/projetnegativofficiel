@@ -6,7 +6,8 @@ interface Props {}
 
 export const FollowSocialNetwork = () => {
   return (
-    <div className=" flex gap-5 px-10 py-20 justify-between  ">
+    <section id="follow-social-network">
+      <div className=" flex gap-5 px-10 py-20 justify-between  ">
       <div className="max-w-2xl">
         <Typography  variant="h3-page-title" component="h5" weight={800} theme="black"  className="tracking-tight" >
           SUIVEZ L'ACTUALITÉ DU CLUB<br />  SUR LES RÉSEAUX SOCIAUX <br /> @NEGATIVBASKETBALL
@@ -15,5 +16,7 @@ export const FollowSocialNetwork = () => {
       <SocialNetworksButtons theme="secondary" className="flex items-center gap-1" icoSize="medium" />
 
     </div>
+</section>
+
   );
 };

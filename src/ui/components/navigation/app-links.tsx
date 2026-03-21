@@ -1,88 +1,95 @@
 import { LinkTypes } from "@/lib/link-type";
-import { AppLinks, FooterLinks } from "@/types/app-links";
+import { AppLinks, FooterLinks, FooterSimpleLink } from "@/types/app-links";
 import { AiFillYoutube, AiOutlineInstagram,  AiOutlineTikTok } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
 
-{/* Footer App Links */  }
-const footerLeClubList: AppLinks[] = [
+export const footerPrimaryColumns: FooterLinks[] = [
   {
-    label: "Présentation du Club",
-    baseUrl: "/presentation-club",
-    type: LinkTypes.INTERNAL,
+    label: "INSCRIPTIONS",
+    links: [
+      {
+        label: "INSCRIPTION",
+        baseUrl: "/informations-pratiques/inscription",
+        type: LinkTypes.INTERNAL,
+      },
+         {
+        label: "LE CLUB",
+        baseUrl: "/presentation-club",
+        type: LinkTypes.INTERNAL,
+      },
+    ],
   },
   {
-    label: "Agenda",
-    baseUrl: "/agenda",
-    type: LinkTypes.INTERNAL,
-  },
-  {
-    label: "Nos Educateurs",
-    baseUrl: "/#",
-    type: LinkTypes.INTERNAL,
-  },
-];
-const footerLesEquipes: AppLinks[] = [
-
-  {
-    label: "Les Equipes Compétitions",
-    baseUrl: "/",
-    type: LinkTypes.INTERNAL,
-  },
-  {
-    label: "Les Equipes Loisirs",
-    baseUrl: "/#",
-    type: LinkTypes.INTERNAL,
-  },
-];
-const footerInformationsLinks: AppLinks[] = [
-  {
-    label: "L'inscription",
-    baseUrl: "/informations-pratiques/inscription",
-    type: LinkTypes.INTERNAL,
-  },
-  {
-    label: "Les Gymnases",
-    baseUrl: "/informations-pratiques/gymnases",
-    type: LinkTypes.INTERNAL,
-  },
-  {
-    label: "Tarifs & Aides",
-    baseUrl: "/informations-pratiques/tarifs-aides",
-    type: LinkTypes.INTERNAL,
-  },
-  {
-    label: "Les Permanences",
-    baseUrl: "/informations-pratiques/permanences",
-    type: LinkTypes.INTERNAL,
-  },
-  {
-    label: "Les Horaires",
-    baseUrl: "/informations-pratiques/horaires",
-    type: LinkTypes.INTERNAL,
-  },
-  {
-    label: "Dates et Reprises",
-    baseUrl: "/informations-pratiques/dates-reprises",
-    type: LinkTypes.INTERNAL,
-  },
-];
-
-export const footerLeClubColumn: FooterLinks = {
-  label: "LE CLUB",
-  links: footerLeClubList,
-};
-
-
-
-export const footerLinks = [
-  {
-    label: "LES EQUIPES",
-    links: footerLesEquipes,
+    label: "LES ÉQUIPES",
+    links: [
+      {
+        label: "LES ÉQUIPES COMPÉTITIONS",
+        baseUrl: "/les-equipes-competitions",
+        type: LinkTypes.INTERNAL,
+      },
+      {
+        label: "LES ÉQUIPES LOISIRS",
+        baseUrl: "/les-equipes-loisirs",
+        type: LinkTypes.INTERNAL,
+      },
+    ],
   },
   {
     label: "INFORMATIONS PRATIQUES",
-    links: footerInformationsLinks,
+    links: [
+      {
+        label: "GYMNASES",
+        baseUrl: "/informations-pratiques/gymnases",
+        type: LinkTypes.INTERNAL,
+      },
+      {
+        label: "TARIFS & AIDES",
+        baseUrl: "/informations-pratiques/tarifs-aides",
+        type: LinkTypes.INTERNAL,
+      },
+      {
+        label: "LES PERMANENCES",
+        baseUrl: "/permanences",
+        type: LinkTypes.INTERNAL,
+      },
+      {
+        label: "LES HORAIRES",
+        baseUrl: "/informations-pratiques/horaires",
+        type: LinkTypes.INTERNAL,
+      },
+      {
+        label: "DATES DE REPRISES",
+        baseUrl: "/informations-pratiques/dates-reprises",
+        type: LinkTypes.INTERNAL,
+      },
+    ],
+  },
+];
+
+export const footerSecondaryLinks: FooterSimpleLink[] = [
+  {
+    label: "LES PROJETS",
+    href: "/les-projets-1",
+    target: "_self",
+  },
+  {
+    label: "LES ACTUALITÉS",
+    href: "/les-actualités",
+    target: "_self",
+  },
+  {
+    label: "NOUS CONTACTER",
+    href: "/nous-contacter",
+    target: "_self",
+  },
+];
+
+export const footerBottomLinks: FooterSimpleLink[] = [
+  {
+    label: "Mentions Légales",
+    href: "/mentions-legales",
+    target: "_self",
   },
 ];
 
@@ -130,4 +137,3 @@ export const leftButtonsLinks: AppLinks[] = [
   }
 ]
 
-{/* Body App Links */  }

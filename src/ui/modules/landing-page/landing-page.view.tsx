@@ -20,9 +20,9 @@ export const LandingPageView = ({ posts }: Props) => {
     <> 
       <HomeHeroView slides={HOME_HERO_SLIDES} />
       
-      <ResultsWidgetView />
+      {/* <ResultsWidgetView /> */}
 
-     
+     <FollowSocialNetwork />
 
       {/* <SocialNetworkView posts={posts} /> A faire plus tard */}
 
@@ -33,7 +33,7 @@ export const LandingPageView = ({ posts }: Props) => {
         surtitle="Il y a 1 mois - Le Club"
       /> 
       
-      <FollowSocialNetwork />
+      
       
       <ProjetPart />
       <PresentationClub />
@@ -42,7 +42,7 @@ export const LandingPageView = ({ posts }: Props) => {
         alt="photo"
         title="NOUS CONTACTER"
         subtitle=""
-        baseUrl="/presentation-club"
+        baseUrl="/nous-contacter"
       />
     </>
   );

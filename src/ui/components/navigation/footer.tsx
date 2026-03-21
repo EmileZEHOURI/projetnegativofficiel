@@ -1,143 +1,172 @@
 import { Typography } from "@/ui/design-system/typography/typography";
 import { Container } from "../container/container";
-import Image from "next/image";
-import { footerLeClubColumn, footerLinks } from "./app-links";
-import { v4 as uuidv4 } from "uuid";
 import { ActiveLink } from "./active-link";
-import { FooterLinks } from "@/types/app-links";
 import { LinkTypes } from "@/lib/link-type";
 import { SocialNetworksButtons } from "./social-networks-buttons";
 import { Logo } from "@/ui/design-system/logo/logo";
+import {
+  footerBottomLinks,
+  footerPrimaryColumns,
+  footerSecondaryLinks,
+} from "./app-links";
+
+type FlatFooterLink = {
+  label: string;
+  href: string;
+  type: "internal" | "external";
+  target?: "_self" | "_blank";
+};
+
+const styles = {
+  footerLink: "hover:text-ref/70 font-[700] transition",
+  bottomLink: "hover:text-gray-300 transition",
+};
+
+function chunkArray<T>(array: T[], size: number): T[][] {
+  const chunks: T[][] = [];
+
+  for (let i = 0; i < array.length; i += size) {
+    chunks.push(array.slice(i, i + size));
+  }
+
+  return chunks;
+}
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const footerNavigationList = footerLinks.map((colomnLinks) => (
-    <FooterLink key={uuidv4()} data={colomnLinks} />
-  ));
+  const primaryLinks: FlatFooterLink[] = footerPrimaryColumns.flatMap(
+    (column) =>
+      column.links.map((link) => ({
+        label: link.label,
+        href: link.baseUrl,
+        type: link.type === LinkTypes.EXTERNAL ? "external" : "internal",
+        target: link.target ?? "_self",
+      })),
+  );
+
+  const secondaryLinks: FlatFooterLink[] = footerSecondaryLinks.map((link) => ({
+    label: link.label,
+    href: link.href,
+    type: link.target === "_blank" ? "external" : "internal",
+    target: link.target ?? "_self",
+  }));
+
+  const allFooterLinks = [...primaryLinks, ...secondaryLinks];
+  const footerColumns = chunkArray(allFooterLinks, 4);
 
   return (
-    <div className="bg-black ">  
-      <Container className="flex items-start gap-16 pt-16">
-        <a href="/" target="_blank">
+    <footer className="bg-zinc-950 ">
+      <Container className="flex items-start gap-10 pt-16">
+        <a href="/" rel="noopener noreferrer">
           <Logo size="xl-footer" />
         </a>
-        {/* Colonne Le Club*/}
-        <div className="">
-          <Typography
-            theme="white"
-            variant="caption2"
-            weight={400}
-            className="pb-5"
-          >
-            INSCRIPTIONS
-          </Typography>
-          <FooterLink data={footerLeClubColumn} />
+
+        <div className="flex gap-10 ">
+          {footerColumns.map((column, columnIndex) => (
+            <div
+              key={`footer-column-${columnIndex}`}
+              className="min-w-[190px] space-y-4"
+            >
+              {column.map((link) => (
+                <FooterFlatLink
+                  key={`${link.href}-${link.label}`}
+                  link={link}
+                />
+              ))}
+            </div>
+          ))}
         </div>
-        {/* Colonne Equipes et Info Pratiques*/}
-        <div className="flex gap-16">{footerNavigationList}</div>
 
-        {/* Colonne Les Projets Les Actualités Nous Contacter */}
+        <div className="mt-6">
+          <Typography  theme="white"
+        variant="caption2"
+        weight={700}
+        stretch="condensed"
+        className="text-center">
+          NOUS SUIVRE
 
-        <div className="min-w-[190px] flex flex-col h-full">
-          <div className="flex flex-col gap-4">
-            <Typography
-              theme="white"
-              variant="caption2"
-              weight={400}
-              className="pb-5"
-            >
-              LES PROJETS
-            </Typography>
-            <Typography
-              theme="white"
-              variant="caption2"
-              weight={400}
-              className="pb-5"
-            >
-              LES ACTUALITES
-            </Typography>
-            <Typography
-              theme="white"
-              variant="caption2"
-              weight={400}
-              className="pb-5"
-            >
-              NOUS CONTACTER
-            </Typography>
-          </div>
-          {/*Bloc Réseau Sociaux*/}
-
-          <div className="mt-6">
-            <SocialNetworksButtons className="flex items-center gap-1" />
-          </div>
+          </Typography>
+          <SocialNetworksButtons className="flex items-center gap-1" />
         </div>
       </Container>
 
-      <Container className="pt-9 pb-11 space-y-11">
+      <Container className="space-y-5 pt-5 pb-5">
         <hr className="border-gray-800" />
-        <div className="flex flex-col justify-center items-center gap-3 flex-wrap text-center">
-          <ul className="flex items-center ">
-            <li className="">
-              <Typography variant="caption1" theme="gray">
-                Mentions Légales
-              </Typography>
-            </li>
+
+        <div className="flex  items-center justify-center gap-1 text-center">
+          <ul className="flex items-center gap-1">
+            {footerBottomLinks.map((link) => (
+              <li key={link.href + link.label}>
+                <a
+                  href={link.href}
+                  target={link.target}
+                  rel={
+                    link.target === "_blank" ? "noopener noreferrer" : undefined
+                  }
+                  className={styles.bottomLink}
+                >
+                  <Typography variant="caption3" theme="white" className="">
+                    {link.label}
+                  </Typography>
+                </a>
+              </li>
+            ))}
           </ul>
-          <div className="">
-            <Typography variant="caption1" theme="gray">
+
+          <div>
+            <Typography variant="caption3" theme="white">
               {`© Copyright ${currentYear} - `}
               <a
-                href="/"
+                href="/https://portfolio-emile-zehouri.web.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline"
               >
-                Negativ Basketball
+                Emile ZEHOURI
               </a>
             </Typography>
           </div>
-          {/* Bloc Liens */}
         </div>
       </Container>
-    </div>
+    </footer>
   );
 };
 
-interface footerLinkProps {
-  data: FooterLinks;
-}
+type FooterFlatLinkProps = {
+  link: FlatFooterLink;
+};
 
-const FooterLink = ({ data }: footerLinkProps) => {
-  const linksList = data.links.map((link) => (
-    <div key={uuidv4()}>
-      {link.type === LinkTypes.INTERNAL && (
-        <ActiveLink href={link.baseUrl}>{link.label}</ActiveLink>
-      )}
-      {link.type === LinkTypes.EXTERNAL && (
-        <a href={link.baseUrl} target="_blank">
-          {link.label}
-        </a>
-      )}
-    </div>
-  ));
+const FooterFlatLink = ({ link }: FooterFlatLinkProps) => {
+  if (link.type === "internal") {
+    return (
+      <Typography
+        theme="white"
+        variant="caption2"
+        weight={700}
+        stretch="condensed"
+        className={styles.footerLink}
+      >
+        <ActiveLink href={link.href}>{link.label}</ActiveLink>
+      </Typography>
+    );
+  }
 
   return (
-    <div className="">
-  
-      <div className="min-w-[190px]">
-        <Typography
-          theme="white"
-          variant="caption2"
-          weight={400}
-          className="pb-5"
-        >
-          {data.label}
-        </Typography>
-        <Typography theme="gray" variant="caption3" className="space-y-4">
-          {linksList}
-        </Typography>
-      </div>
-    </div>
+    <Typography
+      theme="white"
+      variant="caption2"
+      stretch="condensed"
+      weight={700}
+      className={styles.footerLink}
+    >
+      <a
+        href={link.href}
+        target={link.target ?? "_blank"}
+        rel="noopener noreferrer"
+      >
+        {link.label}
+      </a>
+    </Typography>
   );
 };

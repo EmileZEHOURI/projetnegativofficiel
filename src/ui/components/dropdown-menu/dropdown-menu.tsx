@@ -58,7 +58,7 @@ export const DropdownMenu = ({ label, items }: Props) => {
           variant="h2-article-title"
           component="span"
           theme="primary"
-          className="tracking-[8px]"
+          className="tracking-[9px]"
           stretch="condensed"
           weight={700}
         >

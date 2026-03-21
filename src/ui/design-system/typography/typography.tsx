@@ -106,7 +106,7 @@ export const Typography = ({
       colorStyles = "text-gray-900";
       break;
     case "gray":
-      colorStyles = "text-gray-800/80";
+      colorStyles = "text-gray-800/60";
       break;
     case "white":
       colorStyles = "text-white";

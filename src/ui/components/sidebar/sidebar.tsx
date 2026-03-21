@@ -73,18 +73,18 @@ const DEFAULT_MAIN_SECTIONS: MainSection[] = [
       { label: "L'Inscription", href: "/informations-pratiques/inscription" },
       { label: "Les Gymnases", href: "/informations-pratiques/gymnases" },
       { label: "Tarifs & Aides", href: "/informations-pratiques/tarifs-aides" },
-      { label: "Les Permanences", href: "/informations-pratiques/permanences" },
+      { label: "Les Permanences", href: "/permanences" },
       { label: "Les Horaires", href: "/informations-pratiques/horaires" },
       { label: "Dates de Reprise", href: "/informations-pratiques/dates-reprises" },
     ],
   },
   {
     title: "Les Actualités",
-    href: "/",
+    href: "/actualités",
   },
   {
     title: "Nous Contacter",
-    href: "/",
+    href: "/nous-contacter",
   },
 ];
 
@@ -96,17 +96,17 @@ const DEFAULT_SECONDARY_LINKS: SecondaryLink[] = [
   },
   {
     label: "La boutique",
-    href: "https://basketparis14.bigcartel.com/",
+    href: "/",
     target: "_blank",
   },
   {
     label: "Devenir partenaire",
-    href: "/",
+    href: "/devenir-partenaire",
     target: "_self",
   },
   {
     label: "Mentions légales",
-    href: "/",
+    href: "/mentions-légales",
     target: "_self",
   },
 ];

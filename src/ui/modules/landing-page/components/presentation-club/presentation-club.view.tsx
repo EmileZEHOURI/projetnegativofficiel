@@ -55,8 +55,8 @@ export const PresentationClub = () => {
               />
             </div>
 
-            <Image
-              src="/assets/img-negativ/img-sony/photo-lower-body-2.jpg"
+            <img
+              src="/assets/img-negativ/img-sony/photo-lower-body-2.JPG"
               alt="Titre"
               width={240}
               height={80}

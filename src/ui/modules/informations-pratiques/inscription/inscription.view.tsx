@@ -139,8 +139,8 @@ export const InscriptionPageView = () => {
                 TARIFS
               </a>
               <span>|</span>
-              <a href="/" className="text-secondary hover:text-secondary/80">
-                CONTACTS
+              <a href="/informations-pratiques/gymnases" className="text-secondary hover:text-secondary/80">
+                GYMNASES
               </a>
             </Typography>
 
@@ -156,8 +156,8 @@ export const InscriptionPageView = () => {
 
             <PreFooter
               highText="DÉCOUVRIR AUSSI"
-              lowText="COMMENT S'INSCRIRE ?"
-              href="/"
+              lowText="LE CLUB"
+              href="/presentation-club"
             />
           </div>
         </div>

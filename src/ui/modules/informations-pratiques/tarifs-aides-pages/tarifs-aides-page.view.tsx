@@ -30,7 +30,7 @@ export const titleAndParagraph = (title?: string, paragraph?: React.ReactNode) =
         variant="caption1"
         component="h5"
         theme="primary"
-        className=" mt-10 text-left tracking-tighter "
+        className=" mt-10 text-left tracking-[-0.08em] "
         stretch="extended"
         weight={800}
       >
